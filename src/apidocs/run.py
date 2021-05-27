@@ -13,12 +13,10 @@ from apidocs.schemas import schema
 def generate():
     "Convertize API Docs."
 
+
 @generate.command()
 @click.pass_context
 def start(ctx):
     codec = OpenAPICodec()
 
-    _json = codec.dump(schema)
-
-    print(json.dumps(json.loads(_json), indent=4, sort_keys=True))
-
+    click.echo(json.dumps(json.loads(codec.dump(schema)), indent=4, sort_keys=True))

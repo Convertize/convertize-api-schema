@@ -43,6 +43,7 @@ export = {
             coreapi.Field(name='change_date__gte', required=False, location='query', description=u"Filtro por data de alteração maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
         ],
         description='Retorna uma lista de categorias',
+        operationId='categories-list',
         template={
             "200": {
                 "description": "Success",
@@ -103,6 +104,7 @@ export = {
             coreapi.Field(name='change_date__gte', required=False, location='query', description=u"Filtro por data de alteração maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
         ],
         description='Retorna uma uma categoria por `ID`',
+        operationId='categories-detail',
         template={
             "200": {
             "description": "Success",
@@ -145,6 +147,7 @@ export = {
     "CategorieCreate": modules.ConvertizeLink(
         tags=["Categories"],
         url='/{environment}/api/v2/categories/',
+        operationId='categories-create',
         action='post',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
@@ -197,6 +200,7 @@ export = {
             coreapi.Field(name='categorie_id', required=True, location='path', description=u"ID da categoria", schema={"type": "integer"}),
         ],
         description='Alterar uma categoria',
+        operationId='categories-update',
         requestBody={
             "content": {
                 "application/json": {
@@ -256,6 +260,7 @@ export = {
             coreapi.Field(name='categorie_id', required=True, location='path', description=u"ID da categoria", schema={"type": "integer"}),
         ],
         description='Deletar uma categoria',
+        operationId='categories-delete',
         template={
             "204": {
                 "description": "Success",

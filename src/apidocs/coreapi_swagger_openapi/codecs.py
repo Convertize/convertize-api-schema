@@ -62,6 +62,7 @@ class DocumentToSwaggerConverter(object):
         _data = {
             'tags': link._tags,
             'description': link.description,
+            'operationId': link.operationId,
             'responses': cls._get_responses(link),
             'parameters': cls._get_parameters(link.fields)
         }

@@ -2,1267 +2,1274 @@
     "info": {
         "contact": {
             "email": "dev@convertize.com.br"
-        },
-        "description": "Convertize Privated API",
+        }, 
+        "description": "Convertize Privated API", 
         "license": {
-            "name": "Apache 2.0",
+            "name": "Apache 2.0", 
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-        },
-        "termsOfService": "https://compliance.convertize.com.br/",
-        "title": "API Reference",
+        }, 
+        "termsOfService": "https://compliance.convertize.com.br/", 
+        "title": "API Reference", 
         "version": "v2"
-    },
-    "openapi": "3.0.1",
+    }, 
+    "openapi": "3.0.1", 
     "paths": {
         "/{environment}/api/v2/categories/": {
             "get": {
-                "description": "Retorna uma lista de categorias",
+                "description": "Retorna uma lista de categorias", 
+                "operationId": "categories-list", 
                 "parameters": [
                     {
-                        "description": "Ambinete do cliente",
-                        "in": "path",
-                        "name": "environment",
-                        "required": true,
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
                         "schema": {
                             "type": "string"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro por data de cria\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`",
-                        "in": "query",
-                        "name": "add_date__lte",
-                        "required": false,
+                        "description": "Filtro por data de cria\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__lte", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro por data de cria\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`",
-                        "in": "query",
-                        "name": "add_date__gte",
-                        "required": false,
+                        "description": "Filtro por data de cria\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__gte", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro por data de altera\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`",
-                        "in": "query",
-                        "name": "change_date__lte",
-                        "required": false,
+                        "description": "Filtro por data de altera\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__lte", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro por data de altera\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`",
-                        "in": "query",
-                        "name": "change_date__gte",
-                        "required": false,
+                        "description": "Filtro por data de altera\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__gte", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
                     }
-                ],
+                ], 
                 "responses": {
                     "200": {
                         "content": {
                             "application/json": {
                                 "example": {
-                                    "count": 188,
-                                    "next": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/categories/?page=2",
-                                    "previous": null,
+                                    "count": 188, 
+                                    "next": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/categories/?page=2", 
+                                    "previous": null, 
                                     "results": [
                                         {
-                                            "_order": 2,
-                                            "active": true,
-                                            "add_date": "2014-07-24T09:39:34.660080",
-                                            "change_date": "2016-10-06T13:13:00.845996",
-                                            "global_code": null,
-                                            "id": 4,
-                                            "inherit_template": false,
-                                            "level": 0,
-                                            "lft": 1,
-                                            "meta_description": "Grande variedade em ferramentas para Borracharia. Compre agora suas ferramentas para Borracharia, aproveite as melhores marcas e modelos que temos para oferecer. Acesse!",
-                                            "meta_keywords": "borracharia",
-                                            "meta_title": "Borracharia - Materiais para Borracharia",
-                                            "parent": null,
-                                            "rght": 36,
-                                            "slug": "borracharia",
-                                            "title": "Borracharia",
-                                            "tree_id": 2,
+                                            "_order": 2, 
+                                            "active": true, 
+                                            "add_date": "2014-07-24T09:39:34.660080", 
+                                            "change_date": "2016-10-06T13:13:00.845996", 
+                                            "global_code": null, 
+                                            "id": 4, 
+                                            "inherit_template": false, 
+                                            "level": 0, 
+                                            "lft": 1, 
+                                            "meta_description": "Grande variedade em ferramentas para Borracharia. Compre agora suas ferramentas para Borracharia, aproveite as melhores marcas e modelos que temos para oferecer. Acesse!", 
+                                            "meta_keywords": "borracharia", 
+                                            "meta_title": "Borracharia - Materiais para Borracharia", 
+                                            "parent": null, 
+                                            "rght": 36, 
+                                            "slug": "borracharia", 
+                                            "title": "Borracharia", 
+                                            "tree_id": 2, 
                                             "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/categories/4/"
                                         }
                                     ]
-                                },
+                                }, 
                                 "schema": {
                                     "properties": {
                                         "count": {
-                                            "description": "Quantidade total de paginas",
-                                            "nullable": false,
+                                            "description": "Quantidade total de paginas", 
+                                            "nullable": false, 
                                             "type": "integer"
-                                        },
+                                        }, 
                                         "next": {
-                                            "description": "URL com os proximos registro, quando `null`, chegou na ultima pagina.",
-                                            "nullable": true,
+                                            "description": "URL com os proximos registro, quando `null`, chegou na ultima pagina.", 
+                                            "nullable": true, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "previous": {
-                                            "description": "URL com os registro anteriores, quando `null`, chegou na primeira pagina.",
-                                            "nullable": true,
+                                            "description": "URL com os registro anteriores, quando `null`, chegou na primeira pagina.", 
+                                            "nullable": true, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "results": {
                                             "items": {
                                                 "properties": {
                                                     "active": {
-                                                        "description": "Indica se esta ativo `default = true`",
-                                                        "nullable": false,
+                                                        "description": "Indica se esta ativo `default = true`", 
+                                                        "nullable": false, 
                                                         "type": "boolean"
-                                                    },
+                                                    }, 
                                                     "global_code": {
-                                                        "description": "C\u00f3digo da categoria Global `(Google)`",
-                                                        "nullable": false,
+                                                        "description": "C\u00f3digo da categoria Global `(Google)`", 
+                                                        "nullable": false, 
                                                         "type": "boolean"
-                                                    },
+                                                    }, 
                                                     "id": {
-                                                        "description": "ID da categoria",
-                                                        "format": "int64",
-                                                        "nullable": false,
+                                                        "description": "ID da categoria", 
+                                                        "format": "int64", 
+                                                        "nullable": false, 
                                                         "type": "integer"
-                                                    },
+                                                    }, 
                                                     "inherit_template": {
-                                                        "description": "Herdar template do pai",
-                                                        "nullable": false,
+                                                        "description": "Herdar template do pai", 
+                                                        "nullable": false, 
                                                         "type": "boolean"
-                                                    },
+                                                    }, 
                                                     "meta_description": {
-                                                        "description": "Descri\u00e7\u00e3o da categoria para SEO",
-                                                        "nullable": false,
+                                                        "description": "Descri\u00e7\u00e3o da categoria para SEO", 
+                                                        "nullable": false, 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "meta_keywords": {
-                                                        "description": "Keywords da categoria para SEO separadas por `\u201c,\u201d`",
-                                                        "nullable": false,
+                                                        "description": "Keywords da categoria para SEO separadas por `\u201c,\u201d`", 
+                                                        "nullable": false, 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "meta_title": {
-                                                        "description": "Titulo da categoria para SEO",
-                                                        "nullable": false,
+                                                        "description": "Titulo da categoria para SEO", 
+                                                        "nullable": false, 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "parent": {
-                                                        "description": "ID da categoria pai",
-                                                        "nullable": false,
+                                                        "description": "ID da categoria pai", 
+                                                        "nullable": false, 
                                                         "type": "integer"
-                                                    },
+                                                    }, 
                                                     "slug": {
-                                                        "description": "Slug `(url)`, caso vazio o sistema gera automaticamente",
-                                                        "nullable": false,
+                                                        "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                                        "nullable": false, 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "title": {
-                                                        "description": "T\u00edtulo",
-                                                        "nullable": false,
+                                                        "description": "T\u00edtulo", 
+                                                        "nullable": false, 
                                                         "type": "string"
                                                     }
-                                                },
+                                                }, 
                                                 "required": [
-                                                    "id",
+                                                    "id", 
                                                     "title"
                                                 ]
-                                            },
+                                            }, 
                                             "type": "array"
                                         }
-                                    },
+                                    }, 
                                     "type": "object"
                                 }
                             }
-                        },
+                        }, 
                         "description": "Success"
-                    },
+                    }, 
                     "401": {
                         "description": "Permission Denied"
-                    },
+                    }, 
                     "403": {
                         "description": "Forbidden"
-                    },
+                    }, 
                     "404": {
                         "description": "Not Found"
                     }
-                },
+                }, 
                 "tags": [
                     "Categories"
                 ]
-            },
+            }, 
             "post": {
-                "description": "Cria uma categoria",
+                "description": "Cria uma categoria", 
+                "operationId": "categories-create", 
                 "parameters": [
                     {
-                        "description": "Ambinete do cliente",
-                        "in": "path",
-                        "name": "environment",
-                        "required": true,
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
                         "schema": {
                             "type": "string"
                         }
                     }
-                ],
+                ], 
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
                                 "properties": {
                                     "active": {
-                                        "description": "Indica se esta ativo `default = true`",
-                                        "nullable": false,
+                                        "description": "Indica se esta ativo `default = true`", 
+                                        "nullable": false, 
                                         "type": "boolean"
-                                    },
+                                    }, 
                                     "global_code": {
-                                        "description": "C\u00f3digo da categoria Global `(Google)`",
-                                        "nullable": false,
+                                        "description": "C\u00f3digo da categoria Global `(Google)`", 
+                                        "nullable": false, 
                                         "type": "boolean"
-                                    },
+                                    }, 
                                     "id": {
-                                        "description": "ID da categoria",
-                                        "format": "int64",
-                                        "nullable": false,
+                                        "description": "ID da categoria", 
+                                        "format": "int64", 
+                                        "nullable": false, 
                                         "type": "integer"
-                                    },
+                                    }, 
                                     "inherit_template": {
-                                        "description": "Herdar template do pai",
-                                        "nullable": false,
+                                        "description": "Herdar template do pai", 
+                                        "nullable": false, 
                                         "type": "boolean"
-                                    },
+                                    }, 
                                     "meta_description": {
-                                        "description": "Descri\u00e7\u00e3o da categoria para SEO",
-                                        "nullable": false,
+                                        "description": "Descri\u00e7\u00e3o da categoria para SEO", 
+                                        "nullable": false, 
                                         "type": "string"
-                                    },
+                                    }, 
                                     "meta_keywords": {
-                                        "description": "Keywords da categoria para SEO separadas por `\u201c,\u201d`",
-                                        "nullable": false,
+                                        "description": "Keywords da categoria para SEO separadas por `\u201c,\u201d`", 
+                                        "nullable": false, 
                                         "type": "string"
-                                    },
+                                    }, 
                                     "meta_title": {
-                                        "description": "Titulo da categoria para SEO",
-                                        "nullable": false,
+                                        "description": "Titulo da categoria para SEO", 
+                                        "nullable": false, 
                                         "type": "string"
-                                    },
+                                    }, 
                                     "parent": {
-                                        "description": "ID da categoria pai",
-                                        "nullable": false,
+                                        "description": "ID da categoria pai", 
+                                        "nullable": false, 
                                         "type": "integer"
-                                    },
+                                    }, 
                                     "slug": {
-                                        "description": "Slug `(url)`, caso vazio o sistema gera automaticamente",
-                                        "nullable": false,
+                                        "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                        "nullable": false, 
                                         "type": "string"
-                                    },
+                                    }, 
                                     "title": {
-                                        "description": "T\u00edtulo",
-                                        "nullable": false,
+                                        "description": "T\u00edtulo", 
+                                        "nullable": false, 
                                         "type": "string"
                                     }
-                                },
+                                }, 
                                 "required": [
-                                    "id",
+                                    "id", 
                                     "title"
-                                ],
+                                ], 
                                 "type": "object"
                             }
                         }
                     }
-                },
+                }, 
                 "responses": {
                     "201": {
                         "content": {
                             "application/json": {
                                 "example": {
-                                    "active": true,
-                                    "inherit_template": false,
-                                    "meta_description": "DESCRICAO SEO",
-                                    "meta_keywords": "KEYWORDS SEO",
-                                    "meta_title": "TITULO SEO",
+                                    "active": true, 
+                                    "inherit_template": false, 
+                                    "meta_description": "DESCRICAO SEO", 
+                                    "meta_keywords": "KEYWORDS SEO", 
+                                    "meta_title": "TITULO SEO", 
                                     "title": "TITULO"
-                                },
+                                }, 
                                 "schema": {
                                     "properties": {
                                         "active": {
-                                            "description": "Indica se esta ativo `default = true`",
-                                            "nullable": false,
+                                            "description": "Indica se esta ativo `default = true`", 
+                                            "nullable": false, 
                                             "type": "boolean"
-                                        },
+                                        }, 
                                         "global_code": {
-                                            "description": "C\u00f3digo da categoria Global `(Google)`",
-                                            "nullable": false,
+                                            "description": "C\u00f3digo da categoria Global `(Google)`", 
+                                            "nullable": false, 
                                             "type": "boolean"
-                                        },
+                                        }, 
                                         "id": {
-                                            "description": "ID da categoria",
-                                            "format": "int64",
-                                            "nullable": false,
+                                            "description": "ID da categoria", 
+                                            "format": "int64", 
+                                            "nullable": false, 
                                             "type": "integer"
-                                        },
+                                        }, 
                                         "inherit_template": {
-                                            "description": "Herdar template do pai",
-                                            "nullable": false,
+                                            "description": "Herdar template do pai", 
+                                            "nullable": false, 
                                             "type": "boolean"
-                                        },
+                                        }, 
                                         "meta_description": {
-                                            "description": "Descri\u00e7\u00e3o da categoria para SEO",
-                                            "nullable": false,
+                                            "description": "Descri\u00e7\u00e3o da categoria para SEO", 
+                                            "nullable": false, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "meta_keywords": {
-                                            "description": "Keywords da categoria para SEO separadas por `\u201c,\u201d`",
-                                            "nullable": false,
+                                            "description": "Keywords da categoria para SEO separadas por `\u201c,\u201d`", 
+                                            "nullable": false, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "meta_title": {
-                                            "description": "Titulo da categoria para SEO",
-                                            "nullable": false,
+                                            "description": "Titulo da categoria para SEO", 
+                                            "nullable": false, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "parent": {
-                                            "description": "ID da categoria pai",
-                                            "nullable": false,
+                                            "description": "ID da categoria pai", 
+                                            "nullable": false, 
                                             "type": "integer"
-                                        },
+                                        }, 
                                         "slug": {
-                                            "description": "Slug `(url)`, caso vazio o sistema gera automaticamente",
-                                            "nullable": false,
+                                            "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                            "nullable": false, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "title": {
-                                            "description": "T\u00edtulo",
-                                            "nullable": false,
+                                            "description": "T\u00edtulo", 
+                                            "nullable": false, 
                                             "type": "string"
                                         }
-                                    },
+                                    }, 
                                     "required": [
-                                        "id",
+                                        "id", 
                                         "title"
-                                    ],
+                                    ], 
                                     "type": "object"
                                 }
                             }
-                        },
+                        }, 
                         "description": "Created"
-                    },
+                    }, 
                     "400": {
                         "description": "Bad input"
-                    },
+                    }, 
                     "401": {
                         "description": "Permission Denied"
-                    },
+                    }, 
                     "403": {
                         "description": "Forbidden"
-                    },
+                    }, 
                     "404": {
                         "description": "Not Found"
                     }
-                },
+                }, 
                 "tags": [
                     "Categories"
                 ]
             }
-        },
+        }, 
         "/{environment}/api/v2/categories/{categorie_id}/": {
             "delete": {
-                "description": "Deletar uma categoria",
+                "description": "Deletar uma categoria", 
+                "operationId": "categories-delete", 
                 "parameters": [
                     {
-                        "description": "Ambinete do cliente",
-                        "in": "path",
-                        "name": "environment",
-                        "required": true,
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
                         "schema": {
                             "type": "string"
                         }
-                    },
+                    }, 
                     {
-                        "description": "ID da categoria",
-                        "in": "path",
-                        "name": "categorie_id",
-                        "required": true,
+                        "description": "ID da categoria", 
+                        "in": "path", 
+                        "name": "categorie_id", 
+                        "required": true, 
                         "schema": {
                             "type": "integer"
                         }
                     }
-                ],
+                ], 
                 "responses": {
                     "204": {
                         "description": "Success"
-                    },
+                    }, 
                     "401": {
                         "description": "Permission Denied"
-                    },
+                    }, 
                     "403": {
                         "description": "Forbidden"
-                    },
+                    }, 
                     "404": {
                         "description": "Not Found"
                     }
-                },
+                }, 
                 "tags": [
                     "Categories"
                 ]
-            },
+            }, 
             "get": {
-                "description": "Retorna uma uma categoria por `ID`",
+                "description": "Retorna uma uma categoria por `ID`", 
+                "operationId": "categories-detail", 
                 "parameters": [
                     {
-                        "description": "Ambinete do cliente",
-                        "in": "path",
-                        "name": "environment",
-                        "required": true,
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
                         "schema": {
                             "type": "string"
                         }
-                    },
+                    }, 
                     {
-                        "description": "ID da categoria",
-                        "in": "path",
-                        "name": "categorie_id",
-                        "required": true,
+                        "description": "ID da categoria", 
+                        "in": "path", 
+                        "name": "categorie_id", 
+                        "required": true, 
                         "schema": {
                             "type": "integer"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro por data de cria\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`",
-                        "in": "query",
-                        "name": "add_date__lte",
-                        "required": false,
+                        "description": "Filtro por data de cria\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__lte", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro por data de cria\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`",
-                        "in": "query",
-                        "name": "add_date__gte",
-                        "required": false,
+                        "description": "Filtro por data de cria\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__gte", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro por data de altera\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`",
-                        "in": "query",
-                        "name": "change_date__lte",
-                        "required": false,
+                        "description": "Filtro por data de altera\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__lte", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro por data de altera\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`",
-                        "in": "query",
-                        "name": "change_date__gte",
-                        "required": false,
+                        "description": "Filtro por data de altera\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__gte", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
                     }
-                ],
+                ], 
                 "responses": {
                     "200": {
                         "content": {
                             "application/json": {
                                 "example": {
-                                    "_order": 2,
-                                    "active": true,
-                                    "add_date": "2014-07-24T09:39:34.660080",
-                                    "change_date": "2016-10-06T13:13:00.845996",
-                                    "global_code": null,
-                                    "id": 4,
-                                    "inherit_template": false,
-                                    "level": 0,
-                                    "lft": 1,
-                                    "meta_description": "Grande variedade em ferramentas para Borracharia. Compre agora suas ferramentas para Borracharia, aproveite as melhores marcas e modelos que temos para oferecer. Acesse!",
-                                    "meta_keywords": "borracharia",
-                                    "meta_title": "Borracharia - Materiais para Borracharia",
-                                    "parent": null,
-                                    "rght": 36,
-                                    "slug": "borracharia",
-                                    "title": "Borracharia",
+                                    "_order": 2, 
+                                    "active": true, 
+                                    "add_date": "2014-07-24T09:39:34.660080", 
+                                    "change_date": "2016-10-06T13:13:00.845996", 
+                                    "global_code": null, 
+                                    "id": 4, 
+                                    "inherit_template": false, 
+                                    "level": 0, 
+                                    "lft": 1, 
+                                    "meta_description": "Grande variedade em ferramentas para Borracharia. Compre agora suas ferramentas para Borracharia, aproveite as melhores marcas e modelos que temos para oferecer. Acesse!", 
+                                    "meta_keywords": "borracharia", 
+                                    "meta_title": "Borracharia - Materiais para Borracharia", 
+                                    "parent": null, 
+                                    "rght": 36, 
+                                    "slug": "borracharia", 
+                                    "title": "Borracharia", 
                                     "tree_id": 2
-                                },
+                                }, 
                                 "schema": {
                                     "properties": {
                                         "active": {
-                                            "description": "Indica se esta ativo `default = true`",
-                                            "nullable": false,
+                                            "description": "Indica se esta ativo `default = true`", 
+                                            "nullable": false, 
                                             "type": "boolean"
-                                        },
+                                        }, 
                                         "global_code": {
-                                            "description": "C\u00f3digo da categoria Global `(Google)`",
-                                            "nullable": false,
+                                            "description": "C\u00f3digo da categoria Global `(Google)`", 
+                                            "nullable": false, 
                                             "type": "boolean"
-                                        },
+                                        }, 
                                         "id": {
-                                            "description": "ID da categoria",
-                                            "format": "int64",
-                                            "nullable": false,
+                                            "description": "ID da categoria", 
+                                            "format": "int64", 
+                                            "nullable": false, 
                                             "type": "integer"
-                                        },
+                                        }, 
                                         "inherit_template": {
-                                            "description": "Herdar template do pai",
-                                            "nullable": false,
+                                            "description": "Herdar template do pai", 
+                                            "nullable": false, 
                                             "type": "boolean"
-                                        },
+                                        }, 
                                         "meta_description": {
-                                            "description": "Descri\u00e7\u00e3o da categoria para SEO",
-                                            "nullable": false,
+                                            "description": "Descri\u00e7\u00e3o da categoria para SEO", 
+                                            "nullable": false, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "meta_keywords": {
-                                            "description": "Keywords da categoria para SEO separadas por `\u201c,\u201d`",
-                                            "nullable": false,
+                                            "description": "Keywords da categoria para SEO separadas por `\u201c,\u201d`", 
+                                            "nullable": false, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "meta_title": {
-                                            "description": "Titulo da categoria para SEO",
-                                            "nullable": false,
+                                            "description": "Titulo da categoria para SEO", 
+                                            "nullable": false, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "parent": {
-                                            "description": "ID da categoria pai",
-                                            "nullable": false,
+                                            "description": "ID da categoria pai", 
+                                            "nullable": false, 
                                             "type": "integer"
-                                        },
+                                        }, 
                                         "slug": {
-                                            "description": "Slug `(url)`, caso vazio o sistema gera automaticamente",
-                                            "nullable": false,
+                                            "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                            "nullable": false, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "title": {
-                                            "description": "T\u00edtulo",
-                                            "nullable": false,
+                                            "description": "T\u00edtulo", 
+                                            "nullable": false, 
                                             "type": "string"
                                         }
-                                    },
+                                    }, 
                                     "required": [
-                                        "id",
+                                        "id", 
                                         "title"
-                                    ],
+                                    ], 
                                     "type": "object"
                                 }
                             }
-                        },
+                        }, 
                         "description": "Success"
-                    },
+                    }, 
                     "401": {
                         "description": "Permission Denied"
-                    },
+                    }, 
                     "403": {
                         "description": "Forbidden"
-                    },
+                    }, 
                     "404": {
                         "description": "Not Found"
                     }
-                },
+                }, 
                 "tags": [
                     "Categories"
                 ]
-            },
+            }, 
             "put": {
-                "description": "Alterar uma categoria",
+                "description": "Alterar uma categoria", 
+                "operationId": "categories-update", 
                 "parameters": [
                     {
-                        "description": "Ambinete do cliente",
-                        "in": "path",
-                        "name": "environment",
-                        "required": true,
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
                         "schema": {
                             "type": "string"
                         }
-                    },
+                    }, 
                     {
-                        "description": "ID da categoria",
-                        "in": "path",
-                        "name": "categorie_id",
-                        "required": true,
+                        "description": "ID da categoria", 
+                        "in": "path", 
+                        "name": "categorie_id", 
+                        "required": true, 
                         "schema": {
                             "type": "integer"
                         }
                     }
-                ],
+                ], 
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
                                 "properties": {
                                     "active": {
-                                        "description": "Indica se esta ativo `default = true`",
-                                        "nullable": false,
+                                        "description": "Indica se esta ativo `default = true`", 
+                                        "nullable": false, 
                                         "type": "boolean"
-                                    },
+                                    }, 
                                     "global_code": {
-                                        "description": "C\u00f3digo da categoria Global `(Google)`",
-                                        "nullable": false,
+                                        "description": "C\u00f3digo da categoria Global `(Google)`", 
+                                        "nullable": false, 
                                         "type": "boolean"
-                                    },
+                                    }, 
                                     "id": {
-                                        "description": "ID da categoria",
-                                        "format": "int64",
-                                        "nullable": false,
+                                        "description": "ID da categoria", 
+                                        "format": "int64", 
+                                        "nullable": false, 
                                         "type": "integer"
-                                    },
+                                    }, 
                                     "inherit_template": {
-                                        "description": "Herdar template do pai",
-                                        "nullable": false,
+                                        "description": "Herdar template do pai", 
+                                        "nullable": false, 
                                         "type": "boolean"
-                                    },
+                                    }, 
                                     "meta_description": {
-                                        "description": "Descri\u00e7\u00e3o da categoria para SEO",
-                                        "nullable": false,
+                                        "description": "Descri\u00e7\u00e3o da categoria para SEO", 
+                                        "nullable": false, 
                                         "type": "string"
-                                    },
+                                    }, 
                                     "meta_keywords": {
-                                        "description": "Keywords da categoria para SEO separadas por `\u201c,\u201d`",
-                                        "nullable": false,
+                                        "description": "Keywords da categoria para SEO separadas por `\u201c,\u201d`", 
+                                        "nullable": false, 
                                         "type": "string"
-                                    },
+                                    }, 
                                     "meta_title": {
-                                        "description": "Titulo da categoria para SEO",
-                                        "nullable": false,
+                                        "description": "Titulo da categoria para SEO", 
+                                        "nullable": false, 
                                         "type": "string"
-                                    },
+                                    }, 
                                     "parent": {
-                                        "description": "ID da categoria pai",
-                                        "nullable": false,
+                                        "description": "ID da categoria pai", 
+                                        "nullable": false, 
                                         "type": "integer"
-                                    },
+                                    }, 
                                     "slug": {
-                                        "description": "Slug `(url)`, caso vazio o sistema gera automaticamente",
-                                        "nullable": false,
+                                        "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                        "nullable": false, 
                                         "type": "string"
-                                    },
+                                    }, 
                                     "title": {
-                                        "description": "T\u00edtulo",
-                                        "nullable": false,
+                                        "description": "T\u00edtulo", 
+                                        "nullable": false, 
                                         "type": "string"
                                     }
-                                },
+                                }, 
                                 "required": [
-                                    "id",
+                                    "id", 
                                     "title"
-                                ],
+                                ], 
                                 "type": "object"
                             }
                         }
                     }
-                },
+                }, 
                 "responses": {
                     "200": {
                         "content": {
                             "application/json": {
                                 "example": {
-                                    "_order": 65,
-                                    "active": true,
-                                    "add_date": "2014-09-11T14:19:23.997496",
-                                    "change_date": "2014-12-26T16:38:32.426313",
-                                    "global_code": null,
-                                    "id": 74,
-                                    "inherit_template": false,
-                                    "level": 1,
-                                    "lft": 2,
-                                    "meta_description": "DESCRICAO SEO",
-                                    "meta_keywords": "KEYWORDS SEO",
-                                    "meta_title": "TITULO SEO",
-                                    "parent": 4,
-                                    "rght": 3,
-                                    "slug": "teste",
-                                    "title": "TITULO",
-                                    "tree_id": 2,
+                                    "_order": 65, 
+                                    "active": true, 
+                                    "add_date": "2014-09-11T14:19:23.997496", 
+                                    "change_date": "2014-12-26T16:38:32.426313", 
+                                    "global_code": null, 
+                                    "id": 74, 
+                                    "inherit_template": false, 
+                                    "level": 1, 
+                                    "lft": 2, 
+                                    "meta_description": "DESCRICAO SEO", 
+                                    "meta_keywords": "KEYWORDS SEO", 
+                                    "meta_title": "TITULO SEO", 
+                                    "parent": 4, 
+                                    "rght": 3, 
+                                    "slug": "teste", 
+                                    "title": "TITULO", 
+                                    "tree_id": 2, 
                                     "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/categories/74/"
-                                },
+                                }, 
                                 "schema": {
                                     "properties": {
                                         "active": {
-                                            "description": "Indica se esta ativo `default = true`",
-                                            "nullable": false,
+                                            "description": "Indica se esta ativo `default = true`", 
+                                            "nullable": false, 
                                             "type": "boolean"
-                                        },
+                                        }, 
                                         "global_code": {
-                                            "description": "C\u00f3digo da categoria Global `(Google)`",
-                                            "nullable": false,
+                                            "description": "C\u00f3digo da categoria Global `(Google)`", 
+                                            "nullable": false, 
                                             "type": "boolean"
-                                        },
+                                        }, 
                                         "id": {
-                                            "description": "ID da categoria",
-                                            "format": "int64",
-                                            "nullable": false,
+                                            "description": "ID da categoria", 
+                                            "format": "int64", 
+                                            "nullable": false, 
                                             "type": "integer"
-                                        },
+                                        }, 
                                         "inherit_template": {
-                                            "description": "Herdar template do pai",
-                                            "nullable": false,
+                                            "description": "Herdar template do pai", 
+                                            "nullable": false, 
                                             "type": "boolean"
-                                        },
+                                        }, 
                                         "meta_description": {
-                                            "description": "Descri\u00e7\u00e3o da categoria para SEO",
-                                            "nullable": false,
+                                            "description": "Descri\u00e7\u00e3o da categoria para SEO", 
+                                            "nullable": false, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "meta_keywords": {
-                                            "description": "Keywords da categoria para SEO separadas por `\u201c,\u201d`",
-                                            "nullable": false,
+                                            "description": "Keywords da categoria para SEO separadas por `\u201c,\u201d`", 
+                                            "nullable": false, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "meta_title": {
-                                            "description": "Titulo da categoria para SEO",
-                                            "nullable": false,
+                                            "description": "Titulo da categoria para SEO", 
+                                            "nullable": false, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "parent": {
-                                            "description": "ID da categoria pai",
-                                            "nullable": false,
+                                            "description": "ID da categoria pai", 
+                                            "nullable": false, 
                                             "type": "integer"
-                                        },
+                                        }, 
                                         "slug": {
-                                            "description": "Slug `(url)`, caso vazio o sistema gera automaticamente",
-                                            "nullable": false,
+                                            "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                            "nullable": false, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "title": {
-                                            "description": "T\u00edtulo",
-                                            "nullable": false,
+                                            "description": "T\u00edtulo", 
+                                            "nullable": false, 
                                             "type": "string"
                                         }
-                                    },
+                                    }, 
                                     "required": [
-                                        "id",
+                                        "id", 
                                         "title"
-                                    ],
+                                    ], 
                                     "type": "object"
                                 }
                             }
-                        },
+                        }, 
                         "description": "Created"
-                    },
+                    }, 
                     "400": {
                         "description": "Bad input"
-                    },
+                    }, 
                     "401": {
                         "description": "Permission Denied"
-                    },
+                    }, 
                     "403": {
                         "description": "Forbidden"
-                    },
+                    }, 
                     "404": {
                         "description": "Not Found"
                     }
-                },
+                }, 
                 "tags": [
                     "Categories"
                 ]
             }
-        },
+        }, 
         "/{environment}/api/v2/customers/": {
             "get": {
-                "description": "Retorna uma lista de clientes",
+                "description": "Retorna uma lista de clientes", 
+                "operationId": "customers-list", 
                 "parameters": [
                     {
-                        "description": "Ambinete do cliente",
-                        "in": "path",
-                        "name": "environment",
-                        "required": true,
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
                         "schema": {
                             "type": "string"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro por id do cliente",
-                        "in": "query",
-                        "name": "id",
-                        "required": false,
+                        "description": "Filtro por id do cliente", 
+                        "in": "query", 
+                        "name": "id", 
+                        "required": false, 
                         "schema": {
                             "type": "string"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro pelo C\u00f3digo de refer\u00eancia no ERP",
-                        "in": "query",
-                        "name": "reference_code",
-                        "required": false,
+                        "description": "Filtro pelo C\u00f3digo de refer\u00eancia no ERP", 
+                        "in": "query", 
+                        "name": "reference_code", 
+                        "required": false, 
                         "schema": {
                             "type": "string"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro pelo campo newsletter",
-                        "in": "query",
-                        "name": "newsletter",
-                        "required": false,
+                        "description": "Filtro pelo campo newsletter", 
+                        "in": "query", 
+                        "name": "newsletter", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro por data de cria\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`",
-                        "in": "query",
-                        "name": "add_date__lte",
-                        "required": false,
+                        "description": "Filtro por data de cria\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__lte", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro por data de cria\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`",
-                        "in": "query",
-                        "name": "add_date__gte",
-                        "required": false,
+                        "description": "Filtro por data de cria\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__gte", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro por data de altera\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`",
-                        "in": "query",
-                        "name": "change_date__lte",
-                        "required": false,
+                        "description": "Filtro por data de altera\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__lte", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro por data de altera\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`",
-                        "in": "query",
-                        "name": "change_date__gte",
-                        "required": false,
+                        "description": "Filtro por data de altera\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__gte", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
                     }
-                ],
+                ], 
                 "responses": {
                     "200": {
                         "content": {
                             "application/json": {
                                 "example": {
-                                    "count": 40607,
-                                    "next": "https://api.convertize.com.br/{environment}/api/1.0/customers/?page=2",
-                                    "previous": null,
+                                    "count": 40607, 
+                                    "next": "https://api.convertize.com.br/{environment}/api/1.0/customers/?page=2", 
+                                    "previous": null, 
                                     "results": [
                                         {
-                                            "add_date": "2017-08-18T14:04:04.826000",
-                                            "address": null,
-                                            "balance_of_credit": null,
-                                            "blocked": false,
-                                            "change_date": "2017-08-18T14:04:04.826020",
-                                            "city": null,
-                                            "city_id": null,
-                                            "code_ibge": null,
-                                            "complement": null,
-                                            "email": "contato@convertize.com.br",
-                                            "id": 138468,
-                                            "limit_credit": null,
-                                            "name": "Convertize E-Commerce",
-                                            "neighborhood": null,
-                                            "newsletter": 1,
-                                            "number": null,
-                                            "phone1": null,
-                                            "phone2": null,
-                                            "reference": null,
-                                            "reference_code": null,
-                                            "state": null,
+                                            "add_date": "2017-08-18T14:04:04.826000", 
+                                            "address": null, 
+                                            "balance_of_credit": null, 
+                                            "blocked": false, 
+                                            "change_date": "2017-08-18T14:04:04.826020", 
+                                            "city": null, 
+                                            "city_id": null, 
+                                            "code_ibge": null, 
+                                            "complement": null, 
+                                            "email": "contato@convertize.com.br", 
+                                            "id": 138468, 
+                                            "limit_credit": null, 
+                                            "name": "Convertize E-Commerce", 
+                                            "neighborhood": null, 
+                                            "newsletter": 1, 
+                                            "number": null, 
+                                            "phone1": null, 
+                                            "phone2": null, 
+                                            "reference": null, 
+                                            "reference_code": null, 
+                                            "state": null, 
                                             "zipcode": null
                                         }
                                     ]
-                                },
+                                }, 
                                 "schema": {
                                     "properties": {
                                         "count": {
-                                            "description": "Quantidade total de paginas",
-                                            "nullable": false,
+                                            "description": "Quantidade total de paginas", 
+                                            "nullable": false, 
                                             "type": "integer"
-                                        },
+                                        }, 
                                         "next": {
-                                            "description": "URL com os proximos registro, quando `null`, chegou na ultima pagina.",
-                                            "nullable": true,
+                                            "description": "URL com os proximos registro, quando `null`, chegou na ultima pagina.", 
+                                            "nullable": true, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "previous": {
-                                            "description": "URL com os registro anteriores, quando `null`, chegou na primeira pagina.",
-                                            "nullable": true,
+                                            "description": "URL com os registro anteriores, quando `null`, chegou na primeira pagina.", 
+                                            "nullable": true, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "results": {
                                             "items": {
                                                 "properties": {
                                                     "add_date": {
-                                                        "description": "Data de cria\u00e7\u00e3o",
+                                                        "description": "Data de cria\u00e7\u00e3o", 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "address": {
-                                                        "description": "Endere\u00e7o",
+                                                        "description": "Endere\u00e7o", 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "balance_of_credit": {
-                                                        "description": "Saldo de Cr\u00e9dito",
+                                                        "description": "Saldo de Cr\u00e9dito", 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "blocked": {
-                                                        "description": "Indica se esta bloqueado `default = false`",
+                                                        "description": "Indica se esta bloqueado `default = false`", 
                                                         "type": "boolean"
-                                                    },
+                                                    }, 
                                                     "change_date": {
-                                                        "description": "Data de altera\u00e7\u00e3o",
+                                                        "description": "Data de altera\u00e7\u00e3o", 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "city": {
-                                                        "description": "Cidade",
+                                                        "description": "Cidade", 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "city_id": {
-                                                        "description": "ID da cidade",
+                                                        "description": "ID da cidade", 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "code_ibge": {
-                                                        "description": "C\u00f3digo do IBGE da cidade",
+                                                        "description": "C\u00f3digo do IBGE da cidade", 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "complement": {
-                                                        "description": "Complemento",
+                                                        "description": "Complemento", 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "email": {
-                                                        "description": "E-mail do Cliente",
-                                                        "nullable": false,
+                                                        "description": "E-mail do Cliente", 
+                                                        "nullable": false, 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "id": {
-                                                        "description": "ID do Cliente",
-                                                        "format": "int64",
-                                                        "nullable": false,
+                                                        "description": "ID do Cliente", 
+                                                        "format": "int64", 
+                                                        "nullable": false, 
                                                         "type": "integer"
-                                                    },
+                                                    }, 
                                                     "limit_credit": {
-                                                        "description": "Limite de Cr\u00e9dito",
+                                                        "description": "Limite de Cr\u00e9dito", 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "name": {
-                                                        "description": "Nome do Cliente",
-                                                        "nullable": true,
+                                                        "description": "Nome do Cliente", 
+                                                        "nullable": true, 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "neighborhood": {
-                                                        "description": "Bairro",
+                                                        "description": "Bairro", 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "newsletter": {
-                                                        "description": "Indica se o cliente quer receber `newsletter (1 = SIM, 2 = N\u00c3O, 0 = N\u00c3O)`",
-                                                        "format": "int4",
+                                                        "description": "Indica se o cliente quer receber `newsletter (1 = SIM, 2 = N\u00c3O, 0 = N\u00c3O)`", 
+                                                        "format": "int4", 
                                                         "type": "integer"
-                                                    },
+                                                    }, 
                                                     "number": {
-                                                        "description": "N\u00famero",
+                                                        "description": "N\u00famero", 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "phone1": {
-                                                        "description": "Telefone residencial",
+                                                        "description": "Telefone residencial", 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "phone2": {
-                                                        "description": "Telefone celular",
+                                                        "description": "Telefone celular", 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "reference": {
-                                                        "description": "Ponto de Referencia",
+                                                        "description": "Ponto de Referencia", 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "reference_code": {
-                                                        "description": "E-mail do Cliente",
-                                                        "nullable": true,
+                                                        "description": "E-mail do Cliente", 
+                                                        "nullable": true, 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "state": {
-                                                        "description": "Estado",
+                                                        "description": "Estado", 
                                                         "type": "string"
-                                                    },
+                                                    }, 
                                                     "zipcode": {
-                                                        "description": "CEP",
+                                                        "description": "CEP", 
                                                         "type": "string"
                                                     }
-                                                },
+                                                }, 
                                                 "required": [
-                                                    "id",
+                                                    "id", 
                                                     "email"
                                                 ]
-                                            },
+                                            }, 
                                             "type": "array"
                                         }
-                                    },
+                                    }, 
                                     "type": "object"
                                 }
                             }
-                        },
+                        }, 
                         "description": "Success"
-                    },
+                    }, 
                     "401": {
                         "description": "Permission Denied"
-                    },
+                    }, 
                     "403": {
                         "description": "Forbidden"
-                    },
+                    }, 
                     "404": {
                         "description": "Not Found"
                     }
-                },
+                }, 
                 "tags": [
                     "Customers"
                 ]
             }
-        },
+        }, 
         "/{environment}/api/v2/customers/{customer_id}/": {
             "get": {
-                "description": "Retorna uma um cliente por `ID`",
+                "description": "Retorna uma um cliente por `ID`", 
+                "operationId": "customers-detail", 
                 "parameters": [
                     {
-                        "description": "Ambinete do cliente",
-                        "in": "path",
-                        "name": "environment",
-                        "required": true,
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
                         "schema": {
                             "type": "string"
                         }
-                    },
+                    }, 
                     {
-                        "description": "ID do cliente",
-                        "in": "path",
-                        "name": "customer_id",
-                        "required": true,
+                        "description": "ID do cliente", 
+                        "in": "path", 
+                        "name": "customer_id", 
+                        "required": true, 
                         "schema": {
                             "type": "integer"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro pelo C\u00f3digo de refer\u00eancia no ERP",
-                        "in": "query",
-                        "name": "reference_code",
-                        "required": false,
+                        "description": "Filtro pelo C\u00f3digo de refer\u00eancia no ERP", 
+                        "in": "query", 
+                        "name": "reference_code", 
+                        "required": false, 
                         "schema": {
                             "type": "string"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro pelo campo newsletter",
-                        "in": "query",
-                        "name": "newsletter",
-                        "required": false,
+                        "description": "Filtro pelo campo newsletter", 
+                        "in": "query", 
+                        "name": "newsletter", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro por data de cria\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`",
-                        "in": "query",
-                        "name": "add_date__lte",
-                        "required": false,
+                        "description": "Filtro por data de cria\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__lte", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro por data de cria\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`",
-                        "in": "query",
-                        "name": "add_date__gte",
-                        "required": false,
+                        "description": "Filtro por data de cria\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__gte", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro por data de altera\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`",
-                        "in": "query",
-                        "name": "change_date__lte",
-                        "required": false,
+                        "description": "Filtro por data de altera\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__lte", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
-                    },
+                    }, 
                     {
-                        "description": "Filtro por data de altera\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`",
-                        "in": "query",
-                        "name": "change_date__gte",
-                        "required": false,
+                        "description": "Filtro por data de altera\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__gte", 
+                        "required": false, 
                         "schema": {
                             "type": "integer"
                         }
                     }
-                ],
+                ], 
                 "responses": {
                     "200": {
                         "content": {
                             "application/json": {
                                 "example": {
-                                    "add_date": "2017-08-18T14:04:04.826000",
-                                    "address": null,
-                                    "balance_of_credit": null,
-                                    "blocked": false,
-                                    "change_date": "2017-08-18T14:04:04.826020",
-                                    "city": null,
-                                    "city_id": null,
-                                    "code_ibge": null,
-                                    "complement": null,
-                                    "email": "contato@convertize.com.br",
-                                    "id": 138468,
-                                    "limit_credit": null,
-                                    "name": "Convertize E-Commerce",
-                                    "neighborhood": null,
-                                    "newsletter": 1,
-                                    "number": null,
-                                    "phone1": null,
-                                    "phone2": null,
-                                    "reference": null,
-                                    "reference_code": null,
-                                    "state": null,
+                                    "add_date": "2017-08-18T14:04:04.826000", 
+                                    "address": null, 
+                                    "balance_of_credit": null, 
+                                    "blocked": false, 
+                                    "change_date": "2017-08-18T14:04:04.826020", 
+                                    "city": null, 
+                                    "city_id": null, 
+                                    "code_ibge": null, 
+                                    "complement": null, 
+                                    "email": "contato@convertize.com.br", 
+                                    "id": 138468, 
+                                    "limit_credit": null, 
+                                    "name": "Convertize E-Commerce", 
+                                    "neighborhood": null, 
+                                    "newsletter": 1, 
+                                    "number": null, 
+                                    "phone1": null, 
+                                    "phone2": null, 
+                                    "reference": null, 
+                                    "reference_code": null, 
+                                    "state": null, 
                                     "zipcode": null
-                                },
+                                }, 
                                 "schema": {
                                     "properties": {
                                         "add_date": {
-                                            "description": "Data de cria\u00e7\u00e3o",
+                                            "description": "Data de cria\u00e7\u00e3o", 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "address": {
-                                            "description": "Endere\u00e7o",
+                                            "description": "Endere\u00e7o", 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "balance_of_credit": {
-                                            "description": "Saldo de Cr\u00e9dito",
+                                            "description": "Saldo de Cr\u00e9dito", 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "blocked": {
-                                            "description": "Indica se esta bloqueado `default = false`",
+                                            "description": "Indica se esta bloqueado `default = false`", 
                                             "type": "boolean"
-                                        },
+                                        }, 
                                         "change_date": {
-                                            "description": "Data de altera\u00e7\u00e3o",
+                                            "description": "Data de altera\u00e7\u00e3o", 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "city": {
-                                            "description": "Cidade",
+                                            "description": "Cidade", 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "city_id": {
-                                            "description": "ID da cidade",
+                                            "description": "ID da cidade", 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "code_ibge": {
-                                            "description": "C\u00f3digo do IBGE da cidade",
+                                            "description": "C\u00f3digo do IBGE da cidade", 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "complement": {
-                                            "description": "Complemento",
+                                            "description": "Complemento", 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "email": {
-                                            "description": "E-mail do Cliente",
-                                            "nullable": false,
+                                            "description": "E-mail do Cliente", 
+                                            "nullable": false, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "id": {
-                                            "description": "ID do Cliente",
-                                            "format": "int64",
-                                            "nullable": false,
+                                            "description": "ID do Cliente", 
+                                            "format": "int64", 
+                                            "nullable": false, 
                                             "type": "integer"
-                                        },
+                                        }, 
                                         "limit_credit": {
-                                            "description": "Limite de Cr\u00e9dito",
+                                            "description": "Limite de Cr\u00e9dito", 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "name": {
-                                            "description": "Nome do Cliente",
-                                            "nullable": true,
+                                            "description": "Nome do Cliente", 
+                                            "nullable": true, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "neighborhood": {
-                                            "description": "Bairro",
+                                            "description": "Bairro", 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "newsletter": {
-                                            "description": "Indica se o cliente quer receber `newsletter (1 = SIM, 2 = N\u00c3O, 0 = N\u00c3O)`",
-                                            "format": "int4",
+                                            "description": "Indica se o cliente quer receber `newsletter (1 = SIM, 2 = N\u00c3O, 0 = N\u00c3O)`", 
+                                            "format": "int4", 
                                             "type": "integer"
-                                        },
+                                        }, 
                                         "number": {
-                                            "description": "N\u00famero",
+                                            "description": "N\u00famero", 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "phone1": {
-                                            "description": "Telefone residencial",
+                                            "description": "Telefone residencial", 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "phone2": {
-                                            "description": "Telefone celular",
+                                            "description": "Telefone celular", 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "reference": {
-                                            "description": "Ponto de Referencia",
+                                            "description": "Ponto de Referencia", 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "reference_code": {
-                                            "description": "E-mail do Cliente",
-                                            "nullable": true,
+                                            "description": "E-mail do Cliente", 
+                                            "nullable": true, 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "state": {
-                                            "description": "Estado",
+                                            "description": "Estado", 
                                             "type": "string"
-                                        },
+                                        }, 
                                         "zipcode": {
-                                            "description": "CEP",
+                                            "description": "CEP", 
                                             "type": "string"
                                         }
-                                    },
+                                    }, 
                                     "type": "object"
                                 }
                             }
-                        },
+                        }, 
                         "description": "Success"
-                    },
+                    }, 
                     "401": {
                         "description": "Permission Denied"
-                    },
+                    }, 
                     "403": {
                         "description": "Forbidden"
-                    },
+                    }, 
                     "404": {
                         "description": "Not Found"
                     }
-                },
+                }, 
                 "tags": [
                     "Customers"
                 ]
             }
         }
-    },
+    }, 
     "servers": [
         {
             "url": "https://api.convertize.com.br"
         }
-    ],
+    ], 
     "tags": [
         {
-            "description": "Endpoints for customers",
+            "description": "Endpoints for customers", 
             "externalDocs": {
-                "description": "Found an error? Let us know.",
+                "description": "Found an error? Let us know.", 
                 "url": "https://github.com/convertize/convertize-api-docs/issues/new/?title=API%20Documentation%20Error:%20/api/customers/&template=api_error_template.md"
-            },
+            }, 
             "name": "Customers"
-        },
+        }, 
         {
-            "description": "Endpoints for the integration api",
+            "description": "Endpoints for the integration api", 
             "externalDocs": {
-                "description": "Found an error? Let us know.",
+                "description": "Found an error? Let us know.", 
                 "url": "https://github.com/convertize/convertize-api-docs/issues/new/?title=API%20Documentation%20Error:%20/api/integration-platform/&template=api_error_template.md"
-            },
-            "name": "Integration",
+            }, 
+            "name": "Integration", 
             "x-sidebar-name": "Integration API"
         }
     ]

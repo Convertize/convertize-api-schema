@@ -56,6 +56,7 @@ export = {
             coreapi.Field(name='change_date__gte', required=False, location='query', description=u"Filtro por data de alteração maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
         ],
         description='Retorna uma lista de clientes',
+        operationId='customers-list',
         template={
             "200": {
             "description": "Success",
@@ -110,6 +111,7 @@ export = {
     "Customer": modules.ConvertizeLink(
         tags=["Customers"],
         url='/{environment}/api/v2/customers/{customer_id}/',
+        operationId='customers-detail',
         action='get',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),

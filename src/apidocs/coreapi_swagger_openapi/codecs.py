@@ -32,6 +32,7 @@ class DocumentToSwaggerConverter(object):
             'servers': self.document.servers,
             'tags': self.document.tags,
             'paths': self._get_paths_object(),
+            'components': self.document.components
         }
 
     def _get_info_object(self):
@@ -63,6 +64,7 @@ class DocumentToSwaggerConverter(object):
             'tags': link._tags,
             'description': link.description,
             'operationId': link.operationId,
+            'summary': link.summary,
             'responses': cls._get_responses(link),
             'parameters': cls._get_parameters(link.fields)
         }

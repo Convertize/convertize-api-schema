@@ -1,4 +1,12 @@
 {
+    "components": {
+        "securitySchemes": {
+            "auth_token": {
+                "scheme": "Token", 
+                "type": "http"
+            }
+        }
+    }, 
     "info": {
         "contact": {
             "email": "dev@convertize.com.br"
@@ -34,7 +42,8 @@
                         "name": "add_date__lte", 
                         "required": false, 
                         "schema": {
-                            "type": "integer"
+                            "format": "date-time", 
+                            "type": "string"
                         }
                     }, 
                     {
@@ -43,7 +52,8 @@
                         "name": "add_date__gte", 
                         "required": false, 
                         "schema": {
-                            "type": "integer"
+                            "format": "date-time", 
+                            "type": "string"
                         }
                     }, 
                     {
@@ -52,7 +62,8 @@
                         "name": "change_date__lte", 
                         "required": false, 
                         "schema": {
-                            "type": "integer"
+                            "format": "date-time", 
+                            "type": "string"
                         }
                     }, 
                     {
@@ -61,7 +72,8 @@
                         "name": "change_date__gte", 
                         "required": false, 
                         "schema": {
-                            "type": "integer"
+                            "format": "date-time", 
+                            "type": "string"
                         }
                     }
                 ], 
@@ -192,6 +204,7 @@
                         "description": "Not Found"
                     }
                 }, 
+                "summary": "Retorna uma lista de categorias", 
                 "tags": [
                     "Categories"
                 ]
@@ -213,6 +226,18 @@
                 "requestBody": {
                     "content": {
                         "application/json": {
+                            "example": {
+                                "active": true, 
+                                "inherit_template": false, 
+                                "meta_description": "DESCRICAO SEO", 
+                                "meta_keywords": "KEYWORDS SEO", 
+                                "meta_title": "TITULO SEO", 
+                                "title": "TITULO"
+                            }, 
+                            "required": [
+                                "id", 
+                                "title"
+                            ], 
                             "schema": {
                                 "properties": {
                                     "active": {
@@ -274,7 +299,8 @@
                                 "type": "object"
                             }
                         }
-                    }
+                    }, 
+                    "required": true
                 }, 
                 "responses": {
                     "201": {
@@ -365,6 +391,7 @@
                         "description": "Not Found"
                     }
                 }, 
+                "summary": "Cria uma categoria", 
                 "tags": [
                     "Categories"
                 ]
@@ -408,6 +435,7 @@
                         "description": "Not Found"
                     }
                 }, 
+                "summary": "Deletar uma categoria", 
                 "tags": [
                     "Categories"
                 ]
@@ -568,6 +596,7 @@
                         "description": "Not Found"
                     }
                 }, 
+                "summary": "Retorna uma uma categoria por `ID`", 
                 "tags": [
                     "Categories"
                 ]
@@ -598,6 +627,19 @@
                 "requestBody": {
                     "content": {
                         "application/json": {
+                            "example": {
+                                "active": true, 
+                                "inherit_template": false, 
+                                "meta_description": "DESCRICAO SEO", 
+                                "meta_keywords": "KEYWORDS SEO", 
+                                "meta_title": "TITULO SEO", 
+                                "slug": "teste", 
+                                "title": "TITULO"
+                            }, 
+                            "required": [
+                                "id", 
+                                "title"
+                            ], 
                             "schema": {
                                 "properties": {
                                     "active": {
@@ -659,7 +701,8 @@
                                 "type": "object"
                             }
                         }
-                    }
+                    }, 
+                    "required": true
                 }, 
                 "responses": {
                     "200": {
@@ -685,6 +728,10 @@
                                     "tree_id": 2, 
                                     "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/categories/74/"
                                 }, 
+                                "required": [
+                                    "id", 
+                                    "title"
+                                ], 
                                 "schema": {
                                     "properties": {
                                         "active": {
@@ -762,6 +809,7 @@
                         "description": "Not Found"
                     }
                 }, 
+                "summary": "Alterar uma categoria", 
                 "tags": [
                     "Categories"
                 ]
@@ -770,7 +818,7 @@
         "/{environment}/api/v2/customers/": {
             "get": {
                 "description": "Retorna uma lista de clientes", 
-                "operationId": "customers-list", 
+                "operationId": "Lista de Categorias", 
                 "parameters": [
                     {
                         "description": "Ambinete do cliente", 
@@ -1019,6 +1067,7 @@
                         "description": "Not Found"
                     }
                 }, 
+                "summary": "", 
                 "tags": [
                     "Customers"
                 ]
@@ -1027,7 +1076,7 @@
         "/{environment}/api/v2/customers/{customer_id}/": {
             "get": {
                 "description": "Retorna uma um cliente por `ID`", 
-                "operationId": "customers-detail", 
+                "operationId": "Detalhes de uma categorias", 
                 "parameters": [
                     {
                         "description": "Ambinete do cliente", 
@@ -1243,6 +1292,7 @@
                         "description": "Not Found"
                     }
                 }, 
+                "summary": "", 
                 "tags": [
                     "Customers"
                 ]
@@ -1256,14 +1306,6 @@
     ], 
     "tags": [
         {
-            "description": "Endpoints for customers", 
-            "externalDocs": {
-                "description": "Found an error? Let us know.", 
-                "url": "https://github.com/convertize/convertize-api-docs/issues/new/?title=API%20Documentation%20Error:%20/api/customers/&template=api_error_template.md"
-            }, 
-            "name": "Customers"
-        }, 
-        {
             "description": "Endpoints for the integration api", 
             "externalDocs": {
                 "description": "Found an error? Let us know.", 
@@ -1271,6 +1313,22 @@
             }, 
             "name": "Integration", 
             "x-sidebar-name": "Integration API"
+        }, 
+        {
+            "description": "Endpoints for categories", 
+            "externalDocs": {
+                "description": "Found an error? Let us know.", 
+                "url": "https://github.com/convertize/convertize-api-docs/issues/new/?title=API%20Documentation%20Error:%20/api/categories/&template=api_error_template.md"
+            }, 
+            "name": "Categories"
+        }, 
+        {
+            "description": "Endpoints for customers", 
+            "externalDocs": {
+                "description": "Found an error? Let us know.", 
+                "url": "https://github.com/convertize/convertize-api-docs/issues/new/?title=API%20Documentation%20Error:%20/api/customers/&template=api_error_template.md"
+            }, 
+            "name": "Customers"
         }
     ]
 }

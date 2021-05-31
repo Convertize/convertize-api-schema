@@ -3,7 +3,7 @@ import json
 from collections import namedtuple
 
 class ConvertizeLink(coreapi.Link):
-    def __init__(self, url=None, action=None, encoding=None, transform=None, title=None, description=None, fields=None, template=None, tags=None, requestBody=None, operationId=None):
+    def __init__(self, url=None, action=None, encoding=None, transform=None, title=None, description=None, fields=None, template=None, tags=None, requestBody=None, operationId=None, summary=None):
         super(ConvertizeLink, self).__init__(
             url=url,
             action=action,
@@ -18,6 +18,7 @@ class ConvertizeLink(coreapi.Link):
         self._tags = tags
         self._requestBody = requestBody
         self._operationId = operationId
+        self._summary = summary
 
     @property
     def requestBody(self):
@@ -26,6 +27,10 @@ class ConvertizeLink(coreapi.Link):
     @property
     def operationId(self):
         return self._operationId
+
+    @property
+    def summary(self):
+        return self._summary
 
 class ConvertizeField(coreapi.Field):
     pass

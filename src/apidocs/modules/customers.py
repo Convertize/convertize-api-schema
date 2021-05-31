@@ -39,7 +39,6 @@ customers_schema = modules.new_propertie(name="schema", type="object", propertie
 
 customer_schema = modules.new_propertie(name="schema", type="object", properties=customer_componente)
 
-
 export = {
     "Customers": modules.ConvertizeLink(
         tags=["Customers"],
@@ -56,7 +55,8 @@ export = {
             coreapi.Field(name='change_date__gte', required=False, location='query', description=u"Filtro por data de alteração maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
         ],
         description='Retorna uma lista de clientes',
-        operationId='customers-list',
+        summary='',
+        operationId='Lista de Categorias',
         template={
             "200": {
             "description": "Success",
@@ -111,7 +111,6 @@ export = {
     "Customer": modules.ConvertizeLink(
         tags=["Customers"],
         url='/{environment}/api/v2/customers/{customer_id}/',
-        operationId='customers-detail',
         action='get',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
@@ -124,6 +123,8 @@ export = {
             coreapi.Field(name='change_date__gte', required=False, location='query', description=u"Filtro por data de alteração maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
         ],
         description='Retorna uma um cliente por `ID`',
+        summary='',
+        operationId='Detalhes de uma categorias',
         template={
             "200": {
             "description": "Success",

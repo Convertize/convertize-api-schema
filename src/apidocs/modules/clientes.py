@@ -40,8 +40,8 @@ customers_schema = modules.new_propertie(name="schema", type="object", propertie
 customer_schema = modules.new_propertie(name="schema", type="object", properties=customer_componente)
 
 export = {
-    "Customers": modules.ConvertizeLink(
-        tags=["Customers"],
+    "Clientes": modules.ConvertizeLink(
+        tags=["Clientes"],
         url='/{environment}/api/v2/customers/',
         action='get',
         fields=[
@@ -109,7 +109,7 @@ export = {
         }
     ),
     "Customer": modules.ConvertizeLink(
-        tags=["Customers"],
+        tags=["Clientes"],
         url='/{environment}/api/v2/customers/{customer_id}/',
         action='get',
         fields=[

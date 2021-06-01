@@ -22,10 +22,699 @@
     }, 
     "openapi": "3.0.1", 
     "paths": {
+        "/{environment}/api/v2/brands/": {
+            "get": {
+                "description": "Retorna uma lista de Marcas", 
+                "operationId": "Lista de Marcas", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro pelo ID da marca", 
+                        "in": "query", 
+                        "name": "id", 
+                        "required": false, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de cria\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__lte", 
+                        "required": false, 
+                        "schema": {
+                            "format": "date-time", 
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de cria\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__gte", 
+                        "required": false, 
+                        "schema": {
+                            "format": "date-time", 
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de altera\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__lte", 
+                        "required": false, 
+                        "schema": {
+                            "format": "date-time", 
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de altera\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__gte", 
+                        "required": false, 
+                        "schema": {
+                            "format": "date-time", 
+                            "type": "string"
+                        }
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "count": 188, 
+                                    "next": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/brands/?page=2", 
+                                    "previous": null, 
+                                    "results": [
+                                        {
+                                            "active": true, 
+                                            "add_date": "2014-08-01T16:27:17.913597", 
+                                            "change_date": "2014-08-01T16:27:17.913621", 
+                                            "description": "", 
+                                            "id": 735, 
+                                            "image": null, 
+                                            "keywords": "", 
+                                            "slug": "acr", 
+                                            "title": "ACR", 
+                                            "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/brands/735/"
+                                        }
+                                    ]
+                                }, 
+                                "schema": {
+                                    "properties": {
+                                        "count": {
+                                            "description": "Quantidade total de paginas", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "next": {
+                                            "description": "URL com os proximos registro, quando `null`, chegou na ultima pagina.", 
+                                            "nullable": true, 
+                                            "type": "string"
+                                        }, 
+                                        "previous": {
+                                            "description": "URL com os registro anteriores, quando `null`, chegou na primeira pagina.", 
+                                            "nullable": true, 
+                                            "type": "string"
+                                        }, 
+                                        "results": {
+                                            "items": {
+                                                "properties": {
+                                                    "active": {
+                                                        "description": "Indica se esta ativo `default = true`", 
+                                                        "nullable": false, 
+                                                        "type": "boolean"
+                                                    }, 
+                                                    "description": {
+                                                        "description": "Descri\u00e7\u00e3o da mrca para SEO", 
+                                                        "nullable": false, 
+                                                        "type": "string"
+                                                    }, 
+                                                    "id": {
+                                                        "description": "ID da Marca", 
+                                                        "format": "int64", 
+                                                        "nullable": false, 
+                                                        "type": "integer"
+                                                    }, 
+                                                    "image": {
+                                                        "description": "URL da imagem", 
+                                                        "nullable": false, 
+                                                        "type": "string"
+                                                    }, 
+                                                    "keywords": {
+                                                        "description": "Keywords da marca para SEO separadas por `\u201c,\u201d`", 
+                                                        "nullable": false, 
+                                                        "type": "string"
+                                                    }, 
+                                                    "slug": {
+                                                        "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                                        "nullable": false, 
+                                                        "type": "string"
+                                                    }, 
+                                                    "title": {
+                                                        "description": "T\u00edtulo", 
+                                                        "nullable": false, 
+                                                        "type": "string"
+                                                    }
+                                                }, 
+                                                "required": [
+                                                    "id", 
+                                                    "title"
+                                                ]
+                                            }, 
+                                            "type": "array"
+                                        }
+                                    }, 
+                                    "type": "object"
+                                }
+                            }
+                        }, 
+                        "description": "Success"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Marcas"
+                ]
+            }, 
+            "post": {
+                "description": "Criar uma Marca\n\nAo contr\u00e1rio de outras solicita\u00e7\u00f5es de API, os arquivos devem ser carregados usando o tipo de conte\u00fado (content-type): multipart/form-data", 
+                "operationId": "Criar uma Marca", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ], 
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "example": {
+                                "active": true, 
+                                "description": null, 
+                                "image": "logo.png", 
+                                "keywords": null, 
+                                "slug": "teste", 
+                                "title": "TESTE"
+                            }, 
+                            "required": [
+                                "id", 
+                                "title"
+                            ], 
+                            "schema": {
+                                "properties": {
+                                    "active": {
+                                        "description": "Indica se esta ativo `default = true`", 
+                                        "nullable": false, 
+                                        "type": "boolean"
+                                    }, 
+                                    "description": {
+                                        "description": "Descri\u00e7\u00e3o da mrca para SEO", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }, 
+                                    "id": {
+                                        "description": "ID da Marca", 
+                                        "format": "int64", 
+                                        "nullable": false, 
+                                        "type": "integer"
+                                    }, 
+                                    "image": {
+                                        "description": "URL da imagem", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }, 
+                                    "keywords": {
+                                        "description": "Keywords da marca para SEO separadas por `\u201c,\u201d`", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }, 
+                                    "slug": {
+                                        "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }, 
+                                    "title": {
+                                        "description": "T\u00edtulo", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }
+                                }, 
+                                "required": [
+                                    "id", 
+                                    "title"
+                                ], 
+                                "type": "object"
+                            }
+                        }
+                    }, 
+                    "required": true
+                }, 
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "active": true, 
+                                    "add_date": "2016-10-07T19:06:06.076498", 
+                                    "change_date": "2016-10-07T19:06:06.076534", 
+                                    "description": null, 
+                                    "id": 790, 
+                                    "image": "https://api.convertize.com.br/{ENVIRONMENT}/products/brands/2016/logo.png", 
+                                    "keywords": null, 
+                                    "slug": "teste", 
+                                    "title": "TESTE"
+                                }, 
+                                "schema": {
+                                    "properties": {
+                                        "active": {
+                                            "description": "Indica se esta ativo `default = true`", 
+                                            "nullable": false, 
+                                            "type": "boolean"
+                                        }, 
+                                        "description": {
+                                            "description": "Descri\u00e7\u00e3o da mrca para SEO", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "id": {
+                                            "description": "ID da Marca", 
+                                            "format": "int64", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "image": {
+                                            "description": "URL da imagem", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "keywords": {
+                                            "description": "Keywords da marca para SEO separadas por `\u201c,\u201d`", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "slug": {
+                                            "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "title": {
+                                            "description": "T\u00edtulo", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }
+                                    }, 
+                                    "required": [
+                                        "id", 
+                                        "title"
+                                    ], 
+                                    "type": "object"
+                                }
+                            }
+                        }, 
+                        "description": "Created"
+                    }, 
+                    "400": {
+                        "description": "Bad input"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Marcas"
+                ]
+            }
+        }, 
+        "/{environment}/api/v2/brands/{brand_id}/": {
+            "delete": {
+                "description": "Deletar uma Marca", 
+                "operationId": "Deletar uma Marca", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "ID da Marca", 
+                        "in": "path", 
+                        "name": "brand_id", 
+                        "required": true, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ], 
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Marcas"
+                ]
+            }, 
+            "get": {
+                "description": "Retorna uma uma Marca por `ID`", 
+                "operationId": "Detalhes de uma Marcas", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "ID da Marca", 
+                        "in": "path", 
+                        "name": "brand_id", 
+                        "required": true, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de cria\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__lte", 
+                        "required": false, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de cria\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__gte", 
+                        "required": false, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de altera\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__lte", 
+                        "required": false, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de altera\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__gte", 
+                        "required": false, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "active": true, 
+                                    "add_date": "2014-08-01T16:27:17.913597", 
+                                    "change_date": "2014-08-01T16:27:17.913621", 
+                                    "description": "", 
+                                    "id": 735, 
+                                    "image": null, 
+                                    "keywords": "", 
+                                    "slug": "acr", 
+                                    "title": "ACR"
+                                }, 
+                                "schema": {
+                                    "properties": {
+                                        "active": {
+                                            "description": "Indica se esta ativo `default = true`", 
+                                            "nullable": false, 
+                                            "type": "boolean"
+                                        }, 
+                                        "description": {
+                                            "description": "Descri\u00e7\u00e3o da mrca para SEO", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "id": {
+                                            "description": "ID da Marca", 
+                                            "format": "int64", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "image": {
+                                            "description": "URL da imagem", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "keywords": {
+                                            "description": "Keywords da marca para SEO separadas por `\u201c,\u201d`", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "slug": {
+                                            "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "title": {
+                                            "description": "T\u00edtulo", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }
+                                    }, 
+                                    "required": [
+                                        "id", 
+                                        "title"
+                                    ], 
+                                    "type": "object"
+                                }
+                            }
+                        }, 
+                        "description": "Success"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Marcas"
+                ]
+            }, 
+            "put": {
+                "description": "Alterar uma Marca\n\nAo contr\u00e1rio de outras solicita\u00e7\u00f5es de API, os arquivos devem ser carregados usando o tipo de conte\u00fado (content-type): multipart/form-data", 
+                "operationId": "Alterar uma Marca", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "ID da Marca", 
+                        "in": "path", 
+                        "name": "brand_id", 
+                        "required": true, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ], 
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "example": {
+                                "active": true, 
+                                "description": null, 
+                                "image": "logo.png", 
+                                "keywords": null, 
+                                "slug": "teste", 
+                                "title": "TESTE"
+                            }, 
+                            "required": [
+                                "id", 
+                                "title"
+                            ], 
+                            "schema": {
+                                "properties": {
+                                    "active": {
+                                        "description": "Indica se esta ativo `default = true`", 
+                                        "nullable": false, 
+                                        "type": "boolean"
+                                    }, 
+                                    "description": {
+                                        "description": "Descri\u00e7\u00e3o da mrca para SEO", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }, 
+                                    "id": {
+                                        "description": "ID da Marca", 
+                                        "format": "int64", 
+                                        "nullable": false, 
+                                        "type": "integer"
+                                    }, 
+                                    "image": {
+                                        "description": "URL da imagem", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }, 
+                                    "keywords": {
+                                        "description": "Keywords da marca para SEO separadas por `\u201c,\u201d`", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }, 
+                                    "slug": {
+                                        "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }, 
+                                    "title": {
+                                        "description": "T\u00edtulo", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }
+                                }, 
+                                "required": [
+                                    "id", 
+                                    "title"
+                                ], 
+                                "type": "object"
+                            }
+                        }
+                    }, 
+                    "required": true
+                }, 
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "active": true, 
+                                    "add_date": "2016-10-07T19:06:06.076498", 
+                                    "change_date": "2016-10-07T19:06:06.076534", 
+                                    "description": null, 
+                                    "id": 790, 
+                                    "image": "https://api.convertize.com.br/{ENVIRONMENT}/products/brands/2016/logo.png", 
+                                    "keywords": null, 
+                                    "slug": "teste", 
+                                    "title": "TESTE"
+                                }, 
+                                "required": [
+                                    "id", 
+                                    "title"
+                                ], 
+                                "schema": {
+                                    "properties": {
+                                        "active": {
+                                            "description": "Indica se esta ativo `default = true`", 
+                                            "nullable": false, 
+                                            "type": "boolean"
+                                        }, 
+                                        "description": {
+                                            "description": "Descri\u00e7\u00e3o da mrca para SEO", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "id": {
+                                            "description": "ID da Marca", 
+                                            "format": "int64", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "image": {
+                                            "description": "URL da imagem", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "keywords": {
+                                            "description": "Keywords da marca para SEO separadas por `\u201c,\u201d`", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "slug": {
+                                            "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "title": {
+                                            "description": "T\u00edtulo", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }
+                                    }, 
+                                    "required": [
+                                        "id", 
+                                        "title"
+                                    ], 
+                                    "type": "object"
+                                }
+                            }
+                        }, 
+                        "description": "Created"
+                    }, 
+                    "400": {
+                        "description": "Bad input"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Marcas"
+                ]
+            }
+        }, 
         "/{environment}/api/v2/categories/": {
             "get": {
                 "description": "Retorna uma lista de categorias", 
-                "operationId": "categories-list", 
+                "operationId": "Lista de Categorias", 
                 "parameters": [
                     {
                         "description": "Ambinete do cliente", 
@@ -204,14 +893,14 @@
                         "description": "Not Found"
                     }
                 }, 
-                "summary": "Retorna uma lista de categorias", 
+                "summary": "", 
                 "tags": [
-                    "Categories"
+                    "Categorias"
                 ]
             }, 
             "post": {
-                "description": "Cria uma categoria", 
-                "operationId": "categories-create", 
+                "description": "Criar uma Categoria", 
+                "operationId": "Criar uma Categoria", 
                 "parameters": [
                     {
                         "description": "Ambinete do cliente", 
@@ -391,16 +1080,16 @@
                         "description": "Not Found"
                     }
                 }, 
-                "summary": "Cria uma categoria", 
+                "summary": "", 
                 "tags": [
-                    "Categories"
+                    "Categorias"
                 ]
             }
         }, 
         "/{environment}/api/v2/categories/{categorie_id}/": {
             "delete": {
-                "description": "Deletar uma categoria", 
-                "operationId": "categories-delete", 
+                "description": "Deletar uma Categoria", 
+                "operationId": "Deletar uma Categoria", 
                 "parameters": [
                     {
                         "description": "Ambinete do cliente", 
@@ -435,14 +1124,14 @@
                         "description": "Not Found"
                     }
                 }, 
-                "summary": "Deletar uma categoria", 
+                "summary": "", 
                 "tags": [
-                    "Categories"
+                    "Categorias"
                 ]
             }, 
             "get": {
                 "description": "Retorna uma uma categoria por `ID`", 
-                "operationId": "categories-detail", 
+                "operationId": "Detalhes de uma Categoria", 
                 "parameters": [
                     {
                         "description": "Ambinete do cliente", 
@@ -596,14 +1285,14 @@
                         "description": "Not Found"
                     }
                 }, 
-                "summary": "Retorna uma uma categoria por `ID`", 
+                "summary": "", 
                 "tags": [
-                    "Categories"
+                    "Categorias"
                 ]
             }, 
             "put": {
-                "description": "Alterar uma categoria", 
-                "operationId": "categories-update", 
+                "description": "Alterar uma Categoria", 
+                "operationId": "Alterar uma Categoria", 
                 "parameters": [
                     {
                         "description": "Ambinete do cliente", 
@@ -809,9 +1498,9 @@
                         "description": "Not Found"
                     }
                 }, 
-                "summary": "Alterar uma categoria", 
+                "summary": "", 
                 "tags": [
-                    "Categories"
+                    "Categorias"
                 ]
             }
         }, 
@@ -1069,7 +1758,7 @@
                 }, 
                 "summary": "", 
                 "tags": [
-                    "Customers"
+                    "Clientes"
                 ]
             }
         }, 
@@ -1294,7 +1983,2035 @@
                 }, 
                 "summary": "", 
                 "tags": [
-                    "Customers"
+                    "Clientes"
+                ]
+            }
+        }, 
+        "/{environment}/api/v2/grids/": {
+            "get": {
+                "description": "Retorna uma lista de Grades", 
+                "operationId": "Lista de Grades", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro pelo ID da grade", 
+                        "in": "query", 
+                        "name": "id", 
+                        "required": false, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de cria\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__lte", 
+                        "required": false, 
+                        "schema": {
+                            "format": "date-time", 
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de cria\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__gte", 
+                        "required": false, 
+                        "schema": {
+                            "format": "date-time", 
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de altera\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__lte", 
+                        "required": false, 
+                        "schema": {
+                            "format": "date-time", 
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de altera\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__gte", 
+                        "required": false, 
+                        "schema": {
+                            "format": "date-time", 
+                            "type": "string"
+                        }
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "count": 188, 
+                                    "next": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/grids/?page=2", 
+                                    "previous": null, 
+                                    "results": [
+                                        {
+                                            "add_date": "2014-07-24T09:44:23.173981", 
+                                            "change_date": "2014-07-24T09:53:45.519836", 
+                                            "display": "radio", 
+                                            "id": 1, 
+                                            "reference_code": null, 
+                                            "title": "Esmerilhadeiras", 
+                                            "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/grids/1/"
+                                        }
+                                    ]
+                                }, 
+                                "schema": {
+                                    "properties": {
+                                        "count": {
+                                            "description": "Quantidade total de paginas", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "next": {
+                                            "description": "URL com os proximos registro, quando `null`, chegou na ultima pagina.", 
+                                            "nullable": true, 
+                                            "type": "string"
+                                        }, 
+                                        "previous": {
+                                            "description": "URL com os registro anteriores, quando `null`, chegou na primeira pagina.", 
+                                            "nullable": true, 
+                                            "type": "string"
+                                        }, 
+                                        "results": {
+                                            "items": {
+                                                "properties": {
+                                                    "active": {
+                                                        "description": "Indica se esta ativo `default = true`", 
+                                                        "nullable": false, 
+                                                        "type": "boolean"
+                                                    }, 
+                                                    "display": [
+                                                        "radio", 
+                                                        "select", 
+                                                        "custom"
+                                                    ], 
+                                                    "id": {
+                                                        "description": "ID da categoria", 
+                                                        "format": "int64", 
+                                                        "nullable": false, 
+                                                        "type": "integer"
+                                                    }, 
+                                                    "reference_code": {
+                                                        "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                                        "nullable": true, 
+                                                        "type": "string"
+                                                    }, 
+                                                    "title": {
+                                                        "description": "T\u00edtulo", 
+                                                        "nullable": false, 
+                                                        "type": "string"
+                                                    }
+                                                }, 
+                                                "required": [
+                                                    "id", 
+                                                    "title"
+                                                ]
+                                            }, 
+                                            "type": "array"
+                                        }
+                                    }, 
+                                    "type": "object"
+                                }
+                            }
+                        }, 
+                        "description": "Success"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Grades"
+                ]
+            }, 
+            "post": {
+                "description": "Criar uma Grade", 
+                "operationId": "Criar uma Grade", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ], 
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "active": true, 
+                                "display": "radio", 
+                                "title": "Trenas"
+                            }, 
+                            "required": [
+                                "id", 
+                                "title"
+                            ], 
+                            "schema": {
+                                "properties": {
+                                    "active": {
+                                        "description": "Indica se esta ativo `default = true`", 
+                                        "nullable": false, 
+                                        "type": "boolean"
+                                    }, 
+                                    "display": [
+                                        "radio", 
+                                        "select", 
+                                        "custom"
+                                    ], 
+                                    "id": {
+                                        "description": "ID da categoria", 
+                                        "format": "int64", 
+                                        "nullable": false, 
+                                        "type": "integer"
+                                    }, 
+                                    "reference_code": {
+                                        "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                        "nullable": true, 
+                                        "type": "string"
+                                    }, 
+                                    "title": {
+                                        "description": "T\u00edtulo", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }
+                                }, 
+                                "required": [
+                                    "id", 
+                                    "title"
+                                ], 
+                                "type": "object"
+                            }
+                        }
+                    }, 
+                    "required": true
+                }, 
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "active": true, 
+                                    "add_date": "2014-07-31T10:14:19.039051", 
+                                    "change_date": "2014-07-31T10:14:41.881381", 
+                                    "display": "radio", 
+                                    "id": 2, 
+                                    "reference_code": null, 
+                                    "title": "Trenas", 
+                                    "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/grids/2/"
+                                }, 
+                                "schema": {
+                                    "properties": {
+                                        "active": {
+                                            "description": "Indica se esta ativo `default = true`", 
+                                            "nullable": false, 
+                                            "type": "boolean"
+                                        }, 
+                                        "display": [
+                                            "radio", 
+                                            "select", 
+                                            "custom"
+                                        ], 
+                                        "id": {
+                                            "description": "ID da categoria", 
+                                            "format": "int64", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "reference_code": {
+                                            "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                            "nullable": true, 
+                                            "type": "string"
+                                        }, 
+                                        "title": {
+                                            "description": "T\u00edtulo", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }
+                                    }, 
+                                    "required": [
+                                        "id", 
+                                        "title"
+                                    ], 
+                                    "type": "object"
+                                }
+                            }
+                        }, 
+                        "description": "Created"
+                    }, 
+                    "400": {
+                        "description": "Bad input"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Grades"
+                ]
+            }
+        }, 
+        "/{environment}/api/v2/grids/{grid_id}/": {
+            "delete": {
+                "description": "Deletar uma Grade", 
+                "operationId": "Deletar uma Grade", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "ID da grade", 
+                        "in": "path", 
+                        "name": "grid_id", 
+                        "required": true, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ], 
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Grades"
+                ]
+            }, 
+            "get": {
+                "description": "Retorna uma lista de Grade por `ID`", 
+                "operationId": "Detalhes de uma Grade", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "ID da grade", 
+                        "in": "path", 
+                        "name": "grid_id", 
+                        "required": true, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de cria\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__lte", 
+                        "required": false, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de cria\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__gte", 
+                        "required": false, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de altera\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__lte", 
+                        "required": false, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de altera\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__gte", 
+                        "required": false, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "add_date": "2014-07-24T09:44:23.173981", 
+                                    "change_date": "2014-07-24T09:53:45.519836", 
+                                    "display": "radio", 
+                                    "id": 1, 
+                                    "reference_code": null, 
+                                    "title": "Esmerilhadeiras", 
+                                    "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/grids/1/"
+                                }, 
+                                "schema": {
+                                    "properties": {
+                                        "active": {
+                                            "description": "Indica se esta ativo `default = true`", 
+                                            "nullable": false, 
+                                            "type": "boolean"
+                                        }, 
+                                        "display": [
+                                            "radio", 
+                                            "select", 
+                                            "custom"
+                                        ], 
+                                        "id": {
+                                            "description": "ID da categoria", 
+                                            "format": "int64", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "reference_code": {
+                                            "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                            "nullable": true, 
+                                            "type": "string"
+                                        }, 
+                                        "title": {
+                                            "description": "T\u00edtulo", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }
+                                    }, 
+                                    "required": [
+                                        "id", 
+                                        "title"
+                                    ], 
+                                    "type": "object"
+                                }
+                            }
+                        }, 
+                        "description": "Success"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Grades"
+                ]
+            }, 
+            "put": {
+                "description": "Alterar uma Grade", 
+                "operationId": "Alterar uma Grade", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "ID da grade", 
+                        "in": "path", 
+                        "name": "grid_id", 
+                        "required": true, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ], 
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "active": true, 
+                                "display": "radio", 
+                                "title": "Trenas"
+                            }, 
+                            "required": [
+                                "id", 
+                                "title"
+                            ], 
+                            "schema": {
+                                "properties": {
+                                    "active": {
+                                        "description": "Indica se esta ativo `default = true`", 
+                                        "nullable": false, 
+                                        "type": "boolean"
+                                    }, 
+                                    "display": [
+                                        "radio", 
+                                        "select", 
+                                        "custom"
+                                    ], 
+                                    "id": {
+                                        "description": "ID da categoria", 
+                                        "format": "int64", 
+                                        "nullable": false, 
+                                        "type": "integer"
+                                    }, 
+                                    "reference_code": {
+                                        "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                        "nullable": true, 
+                                        "type": "string"
+                                    }, 
+                                    "title": {
+                                        "description": "T\u00edtulo", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }
+                                }, 
+                                "required": [
+                                    "id", 
+                                    "title"
+                                ], 
+                                "type": "object"
+                            }
+                        }
+                    }, 
+                    "required": true
+                }, 
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "active": true, 
+                                    "add_date": "2014-07-31T10:14:19.039051", 
+                                    "change_date": "2014-07-31T10:14:41.881381", 
+                                    "display": "radio", 
+                                    "id": 2, 
+                                    "reference_code": null, 
+                                    "title": "Trenas", 
+                                    "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/grids/2/"
+                                }, 
+                                "required": [
+                                    "id", 
+                                    "title"
+                                ], 
+                                "schema": {
+                                    "properties": {
+                                        "active": {
+                                            "description": "Indica se esta ativo `default = true`", 
+                                            "nullable": false, 
+                                            "type": "boolean"
+                                        }, 
+                                        "display": [
+                                            "radio", 
+                                            "select", 
+                                            "custom"
+                                        ], 
+                                        "id": {
+                                            "description": "ID da categoria", 
+                                            "format": "int64", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "reference_code": {
+                                            "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                            "nullable": true, 
+                                            "type": "string"
+                                        }, 
+                                        "title": {
+                                            "description": "T\u00edtulo", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }
+                                    }, 
+                                    "required": [
+                                        "id", 
+                                        "title"
+                                    ], 
+                                    "type": "object"
+                                }
+                            }
+                        }, 
+                        "description": "Created"
+                    }, 
+                    "400": {
+                        "description": "Bad input"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Grades"
+                ]
+            }
+        }, 
+        "/{environment}/api/v2/options/": {
+            "get": {
+                "description": "Retorna uma lista de Op\u00e7\u00f5es", 
+                "operationId": "Lista de Op\u00e7\u00f5es", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro pelo ID da op\u00e7\u00e3o", 
+                        "in": "query", 
+                        "name": "id", 
+                        "required": false, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de cria\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__lte", 
+                        "required": false, 
+                        "schema": {
+                            "format": "date-time", 
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de cria\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__gte", 
+                        "required": false, 
+                        "schema": {
+                            "format": "date-time", 
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de altera\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__lte", 
+                        "required": false, 
+                        "schema": {
+                            "format": "date-time", 
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de altera\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__gte", 
+                        "required": false, 
+                        "schema": {
+                            "format": "date-time", 
+                            "type": "string"
+                        }
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "count": 188, 
+                                    "next": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/options/?page=2", 
+                                    "previous": null, 
+                                    "results": [
+                                        {
+                                            "add_date": "2015-11-11T18:06:14.024972", 
+                                            "change_date": "2015-11-11T18:06:14.024989", 
+                                            "display": null, 
+                                            "filterable": false, 
+                                            "grid": 43, 
+                                            "id": 5, 
+                                            "position": 0, 
+                                            "reference_code": null, 
+                                            "slug": "cor", 
+                                            "title": "Cor", 
+                                            "ungroup": false, 
+                                            "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/options/5/"
+                                        }
+                                    ]
+                                }, 
+                                "schema": {
+                                    "properties": {
+                                        "count": {
+                                            "description": "Quantidade total de paginas", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "next": {
+                                            "description": "URL com os proximos registro, quando `null`, chegou na ultima pagina.", 
+                                            "nullable": true, 
+                                            "type": "string"
+                                        }, 
+                                        "previous": {
+                                            "description": "URL com os registro anteriores, quando `null`, chegou na primeira pagina.", 
+                                            "nullable": true, 
+                                            "type": "string"
+                                        }, 
+                                        "results": {
+                                            "items": {
+                                                "properties": {
+                                                    "display": [
+                                                        "checkbox", 
+                                                        "color", 
+                                                        "size"
+                                                    ], 
+                                                    "filterable": {
+                                                        "description": "Define se a op\u00e7\u00e3o ser\u00e1 filtravel `default = true`", 
+                                                        "nullable": false, 
+                                                        "type": "boolean"
+                                                    }, 
+                                                    "grid": {
+                                                        "description": "ID da Grade", 
+                                                        "nullable": false, 
+                                                        "type": "integer"
+                                                    }, 
+                                                    "id": {
+                                                        "description": "ID da op\u00e7\u00e3o", 
+                                                        "format": "int64", 
+                                                        "nullable": false, 
+                                                        "type": "integer"
+                                                    }, 
+                                                    "position": {
+                                                        "description": "Ordem das op\u00e7\u00f5es", 
+                                                        "nullable": false, 
+                                                        "type": "integer"
+                                                    }, 
+                                                    "reference_code": {
+                                                        "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                                        "nullable": true, 
+                                                        "type": "string"
+                                                    }, 
+                                                    "slug": {
+                                                        "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                                        "nullable": false, 
+                                                        "type": "string"
+                                                    }, 
+                                                    "title": {
+                                                        "description": "T\u00edtulo", 
+                                                        "nullable": false, 
+                                                        "type": "string"
+                                                    }, 
+                                                    "ungroup": {
+                                                        "description": "Define se a op\u00e7\u00e3o dever\u00e1 ser desagrupada `default = true`", 
+                                                        "nullable": false, 
+                                                        "type": "boolean"
+                                                    }
+                                                }, 
+                                                "required": [
+                                                    "id", 
+                                                    "title"
+                                                ]
+                                            }, 
+                                            "type": "array"
+                                        }
+                                    }, 
+                                    "type": "object"
+                                }
+                            }
+                        }, 
+                        "description": "Success"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Grades"
+                ]
+            }, 
+            "post": {
+                "description": "Criar uma Op\u00e7\u00e3o", 
+                "operationId": "Criar uma Op\u00e7\u00e3o", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ], 
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "filterable": false, 
+                                "grid": 5, 
+                                "title": "Tamanho", 
+                                "ungroup": false
+                            }, 
+                            "required": [
+                                "id", 
+                                "title"
+                            ], 
+                            "schema": {
+                                "properties": {
+                                    "display": [
+                                        "checkbox", 
+                                        "color", 
+                                        "size"
+                                    ], 
+                                    "filterable": {
+                                        "description": "Define se a op\u00e7\u00e3o ser\u00e1 filtravel `default = true`", 
+                                        "nullable": false, 
+                                        "type": "boolean"
+                                    }, 
+                                    "grid": {
+                                        "description": "ID da Grade", 
+                                        "nullable": false, 
+                                        "type": "integer"
+                                    }, 
+                                    "id": {
+                                        "description": "ID da op\u00e7\u00e3o", 
+                                        "format": "int64", 
+                                        "nullable": false, 
+                                        "type": "integer"
+                                    }, 
+                                    "position": {
+                                        "description": "Ordem das op\u00e7\u00f5es", 
+                                        "nullable": false, 
+                                        "type": "integer"
+                                    }, 
+                                    "reference_code": {
+                                        "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                        "nullable": true, 
+                                        "type": "string"
+                                    }, 
+                                    "slug": {
+                                        "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }, 
+                                    "title": {
+                                        "description": "T\u00edtulo", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }, 
+                                    "ungroup": {
+                                        "description": "Define se a op\u00e7\u00e3o dever\u00e1 ser desagrupada `default = true`", 
+                                        "nullable": false, 
+                                        "type": "boolean"
+                                    }
+                                }, 
+                                "required": [
+                                    "id", 
+                                    "title"
+                                ], 
+                                "type": "object"
+                            }
+                        }
+                    }, 
+                    "required": true
+                }, 
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "add_date": "2014-08-18T16:58:42.012403", 
+                                    "change_date": "2014-08-18T17:03:43.902259", 
+                                    "display": null, 
+                                    "filterable": false, 
+                                    "grid": 5, 
+                                    "id": 2, 
+                                    "position": 0, 
+                                    "reference_code": null, 
+                                    "slug": "tamanho", 
+                                    "title": "Tamanho", 
+                                    "ungroup": false, 
+                                    "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/options/2/"
+                                }, 
+                                "schema": {
+                                    "properties": {
+                                        "display": [
+                                            "checkbox", 
+                                            "color", 
+                                            "size"
+                                        ], 
+                                        "filterable": {
+                                            "description": "Define se a op\u00e7\u00e3o ser\u00e1 filtravel `default = true`", 
+                                            "nullable": false, 
+                                            "type": "boolean"
+                                        }, 
+                                        "grid": {
+                                            "description": "ID da Grade", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "id": {
+                                            "description": "ID da op\u00e7\u00e3o", 
+                                            "format": "int64", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "position": {
+                                            "description": "Ordem das op\u00e7\u00f5es", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "reference_code": {
+                                            "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                            "nullable": true, 
+                                            "type": "string"
+                                        }, 
+                                        "slug": {
+                                            "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "title": {
+                                            "description": "T\u00edtulo", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "ungroup": {
+                                            "description": "Define se a op\u00e7\u00e3o dever\u00e1 ser desagrupada `default = true`", 
+                                            "nullable": false, 
+                                            "type": "boolean"
+                                        }
+                                    }, 
+                                    "required": [
+                                        "id", 
+                                        "title"
+                                    ], 
+                                    "type": "object"
+                                }
+                            }
+                        }, 
+                        "description": "Created"
+                    }, 
+                    "400": {
+                        "description": "Bad input"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Grades"
+                ]
+            }
+        }, 
+        "/{environment}/api/v2/options/{option_id}/": {
+            "delete": {
+                "description": "Deletar uma Op\u00e7\u00e3o", 
+                "operationId": "Deletar uma Op\u00e7\u00e3o", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "ID da Op\u00e7\u00e3o", 
+                        "in": "path", 
+                        "name": "option_id", 
+                        "required": true, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ], 
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Grades"
+                ]
+            }, 
+            "get": {
+                "description": "Retorna uma lista de Op\u00e7\u00e3o por `ID`", 
+                "operationId": "Detalhes de uma Op\u00e7\u00e3o", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "ID da grade", 
+                        "in": "path", 
+                        "name": "option_id", 
+                        "required": true, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de cria\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__lte", 
+                        "required": false, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de cria\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__gte", 
+                        "required": false, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de altera\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__lte", 
+                        "required": false, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de altera\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__gte", 
+                        "required": false, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "add_date": "2014-07-24T09:44:23.173981", 
+                                    "change_date": "2014-07-24T09:53:45.519836", 
+                                    "display": "radio", 
+                                    "id": 1, 
+                                    "reference_code": null, 
+                                    "title": "Esmerilhadeiras", 
+                                    "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/options/1/"
+                                }, 
+                                "schema": {
+                                    "properties": {
+                                        "display": [
+                                            "checkbox", 
+                                            "color", 
+                                            "size"
+                                        ], 
+                                        "filterable": {
+                                            "description": "Define se a op\u00e7\u00e3o ser\u00e1 filtravel `default = true`", 
+                                            "nullable": false, 
+                                            "type": "boolean"
+                                        }, 
+                                        "grid": {
+                                            "description": "ID da Grade", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "id": {
+                                            "description": "ID da op\u00e7\u00e3o", 
+                                            "format": "int64", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "position": {
+                                            "description": "Ordem das op\u00e7\u00f5es", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "reference_code": {
+                                            "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                            "nullable": true, 
+                                            "type": "string"
+                                        }, 
+                                        "slug": {
+                                            "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "title": {
+                                            "description": "T\u00edtulo", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "ungroup": {
+                                            "description": "Define se a op\u00e7\u00e3o dever\u00e1 ser desagrupada `default = true`", 
+                                            "nullable": false, 
+                                            "type": "boolean"
+                                        }
+                                    }, 
+                                    "required": [
+                                        "id", 
+                                        "title"
+                                    ], 
+                                    "type": "object"
+                                }
+                            }
+                        }, 
+                        "description": "Success"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Grades"
+                ]
+            }, 
+            "put": {
+                "description": "Alterar uma Op\u00e7\u00e3o", 
+                "operationId": "Alterar uma Op\u00e7\u00e3o", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "ID da Op\u00e7\u00e3o", 
+                        "in": "path", 
+                        "name": "option_id", 
+                        "required": true, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ], 
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "filterable": false, 
+                                "grid": 5, 
+                                "title": "Tamanho", 
+                                "ungroup": false
+                            }, 
+                            "required": [
+                                "id", 
+                                "title"
+                            ], 
+                            "schema": {
+                                "properties": {
+                                    "display": [
+                                        "checkbox", 
+                                        "color", 
+                                        "size"
+                                    ], 
+                                    "filterable": {
+                                        "description": "Define se a op\u00e7\u00e3o ser\u00e1 filtravel `default = true`", 
+                                        "nullable": false, 
+                                        "type": "boolean"
+                                    }, 
+                                    "grid": {
+                                        "description": "ID da Grade", 
+                                        "nullable": false, 
+                                        "type": "integer"
+                                    }, 
+                                    "id": {
+                                        "description": "ID da op\u00e7\u00e3o", 
+                                        "format": "int64", 
+                                        "nullable": false, 
+                                        "type": "integer"
+                                    }, 
+                                    "position": {
+                                        "description": "Ordem das op\u00e7\u00f5es", 
+                                        "nullable": false, 
+                                        "type": "integer"
+                                    }, 
+                                    "reference_code": {
+                                        "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                        "nullable": true, 
+                                        "type": "string"
+                                    }, 
+                                    "slug": {
+                                        "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }, 
+                                    "title": {
+                                        "description": "T\u00edtulo", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }, 
+                                    "ungroup": {
+                                        "description": "Define se a op\u00e7\u00e3o dever\u00e1 ser desagrupada `default = true`", 
+                                        "nullable": false, 
+                                        "type": "boolean"
+                                    }
+                                }, 
+                                "required": [
+                                    "id", 
+                                    "title"
+                                ], 
+                                "type": "object"
+                            }
+                        }
+                    }, 
+                    "required": true
+                }, 
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "add_date": "2014-08-18T16:58:42.012403", 
+                                    "change_date": "2014-08-18T17:03:43.902259", 
+                                    "display": null, 
+                                    "filterable": false, 
+                                    "grid": 5, 
+                                    "id": 2, 
+                                    "position": 0, 
+                                    "reference_code": null, 
+                                    "slug": "tamanho", 
+                                    "title": "Tamanho", 
+                                    "ungroup": false, 
+                                    "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/options/2/"
+                                }, 
+                                "required": [
+                                    "id", 
+                                    "title"
+                                ], 
+                                "schema": {
+                                    "properties": {
+                                        "display": [
+                                            "checkbox", 
+                                            "color", 
+                                            "size"
+                                        ], 
+                                        "filterable": {
+                                            "description": "Define se a op\u00e7\u00e3o ser\u00e1 filtravel `default = true`", 
+                                            "nullable": false, 
+                                            "type": "boolean"
+                                        }, 
+                                        "grid": {
+                                            "description": "ID da Grade", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "id": {
+                                            "description": "ID da op\u00e7\u00e3o", 
+                                            "format": "int64", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "position": {
+                                            "description": "Ordem das op\u00e7\u00f5es", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "reference_code": {
+                                            "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                            "nullable": true, 
+                                            "type": "string"
+                                        }, 
+                                        "slug": {
+                                            "description": "Slug `(url)`, caso vazio o sistema gera automaticamente", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "title": {
+                                            "description": "T\u00edtulo", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "ungroup": {
+                                            "description": "Define se a op\u00e7\u00e3o dever\u00e1 ser desagrupada `default = true`", 
+                                            "nullable": false, 
+                                            "type": "boolean"
+                                        }
+                                    }, 
+                                    "required": [
+                                        "id", 
+                                        "title"
+                                    ], 
+                                    "type": "object"
+                                }
+                            }
+                        }, 
+                        "description": "Created"
+                    }, 
+                    "400": {
+                        "description": "Bad input"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Grades"
+                ]
+            }
+        }, 
+        "/{environment}/api/v2/values/": {
+            "get": {
+                "description": "Retorna uma lista de Valores", 
+                "operationId": "Lista de Valores", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro pelo ID da op\u00e7\u00e3o", 
+                        "in": "query", 
+                        "name": "id", 
+                        "required": false, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                        "in": "query", 
+                        "name": "reference_code", 
+                        "required": false, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de cria\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__lte", 
+                        "required": false, 
+                        "schema": {
+                            "format": "date-time", 
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de cria\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__gte", 
+                        "required": false, 
+                        "schema": {
+                            "format": "date-time", 
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de altera\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__lte", 
+                        "required": false, 
+                        "schema": {
+                            "format": "date-time", 
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de altera\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__gte", 
+                        "required": false, 
+                        "schema": {
+                            "format": "date-time", 
+                            "type": "string"
+                        }
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "count": 188, 
+                                    "next": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/values/?page=2", 
+                                    "previous": null, 
+                                    "results": [
+                                        {
+                                            "add_date": "2015-11-11T18:06:14.383121", 
+                                            "change_date": "2015-11-11T18:38:46.746944", 
+                                            "color": "", 
+                                            "id": 14, 
+                                            "option": 5, 
+                                            "position": 0, 
+                                            "reference_code": null, 
+                                            "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/values/14/", 
+                                            "value": "Azul"
+                                        }
+                                    ]
+                                }, 
+                                "schema": {
+                                    "properties": {
+                                        "count": {
+                                            "description": "Quantidade total de paginas", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "next": {
+                                            "description": "URL com os proximos registro, quando `null`, chegou na ultima pagina.", 
+                                            "nullable": true, 
+                                            "type": "string"
+                                        }, 
+                                        "previous": {
+                                            "description": "URL com os registro anteriores, quando `null`, chegou na primeira pagina.", 
+                                            "nullable": true, 
+                                            "type": "string"
+                                        }, 
+                                        "results": {
+                                            "items": {
+                                                "properties": {
+                                                    "color": {
+                                                        "description": "#Hexadecimal - (`separar por virgula caso haja mais de uma`)", 
+                                                        "nullable": false, 
+                                                        "type": "string"
+                                                    }, 
+                                                    "id": {
+                                                        "description": "ID do valor", 
+                                                        "format": "int64", 
+                                                        "nullable": false, 
+                                                        "type": "integer"
+                                                    }, 
+                                                    "option": {
+                                                        "description": "ID da Op\u00e7\u00e3o", 
+                                                        "nullable": false, 
+                                                        "type": "integer"
+                                                    }, 
+                                                    "position": {
+                                                        "description": "Ordem do Valor", 
+                                                        "nullable": false, 
+                                                        "type": "integer"
+                                                    }, 
+                                                    "reference_code": {
+                                                        "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                                        "nullable": true, 
+                                                        "type": "string"
+                                                    }, 
+                                                    "value": {
+                                                        "description": "Valor", 
+                                                        "nullable": false, 
+                                                        "type": "string"
+                                                    }
+                                                }, 
+                                                "required": [
+                                                    "id", 
+                                                    "title"
+                                                ]
+                                            }, 
+                                            "type": "array"
+                                        }
+                                    }, 
+                                    "type": "object"
+                                }
+                            }
+                        }, 
+                        "description": "Success"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Grades"
+                ]
+            }, 
+            "post": {
+                "description": "Criar um Valor", 
+                "operationId": "Criar um Valor", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ], 
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "option": 5, 
+                                "value": "Azul"
+                            }, 
+                            "required": [
+                                "id", 
+                                "title"
+                            ], 
+                            "schema": {
+                                "properties": {
+                                    "color": {
+                                        "description": "#Hexadecimal - (`separar por virgula caso haja mais de uma`)", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }, 
+                                    "id": {
+                                        "description": "ID do valor", 
+                                        "format": "int64", 
+                                        "nullable": false, 
+                                        "type": "integer"
+                                    }, 
+                                    "option": {
+                                        "description": "ID da Op\u00e7\u00e3o", 
+                                        "nullable": false, 
+                                        "type": "integer"
+                                    }, 
+                                    "position": {
+                                        "description": "Ordem do Valor", 
+                                        "nullable": false, 
+                                        "type": "integer"
+                                    }, 
+                                    "reference_code": {
+                                        "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                        "nullable": true, 
+                                        "type": "string"
+                                    }, 
+                                    "value": {
+                                        "description": "Valor", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }
+                                }, 
+                                "required": [
+                                    "id", 
+                                    "title"
+                                ], 
+                                "type": "object"
+                            }
+                        }
+                    }, 
+                    "required": true
+                }, 
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "add_date": "2015-11-11T18:06:14.383121", 
+                                    "change_date": "2015-11-11T18:38:46.746944", 
+                                    "color": "", 
+                                    "id": 14, 
+                                    "option": 5, 
+                                    "position": 0, 
+                                    "reference_code": null, 
+                                    "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/values/14/", 
+                                    "value": "Azul"
+                                }, 
+                                "schema": {
+                                    "properties": {
+                                        "color": {
+                                            "description": "#Hexadecimal - (`separar por virgula caso haja mais de uma`)", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "id": {
+                                            "description": "ID do valor", 
+                                            "format": "int64", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "option": {
+                                            "description": "ID da Op\u00e7\u00e3o", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "position": {
+                                            "description": "Ordem do Valor", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "reference_code": {
+                                            "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                            "nullable": true, 
+                                            "type": "string"
+                                        }, 
+                                        "value": {
+                                            "description": "Valor", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }
+                                    }, 
+                                    "required": [
+                                        "id", 
+                                        "title"
+                                    ], 
+                                    "type": "object"
+                                }
+                            }
+                        }, 
+                        "description": "Created"
+                    }, 
+                    "400": {
+                        "description": "Bad input"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Grades"
+                ]
+            }
+        }, 
+        "/{environment}/api/v2/values/{option_id}/": {
+            "get": {
+                "description": "Detalhes de um Valor por `ID`", 
+                "operationId": "Detalhes de um Valor", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "ID da grade", 
+                        "in": "path", 
+                        "name": "option_id", 
+                        "required": true, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de cria\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__lte", 
+                        "required": false, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de cria\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "add_date__gte", 
+                        "required": false, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de altera\u00e7\u00e3o menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__lte", 
+                        "required": false, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }, 
+                    {
+                        "description": "Filtro por data de altera\u00e7\u00e3o maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", 
+                        "in": "query", 
+                        "name": "change_date__gte", 
+                        "required": false, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "add_date": "2015-11-11T18:06:14.383121", 
+                                    "change_date": "2015-11-11T18:38:46.746944", 
+                                    "color": "", 
+                                    "id": 14, 
+                                    "option": 5, 
+                                    "position": 0, 
+                                    "reference_code": null, 
+                                    "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/values/14/", 
+                                    "value": "Azul"
+                                }, 
+                                "schema": {
+                                    "properties": {
+                                        "color": {
+                                            "description": "#Hexadecimal - (`separar por virgula caso haja mais de uma`)", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "id": {
+                                            "description": "ID do valor", 
+                                            "format": "int64", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "option": {
+                                            "description": "ID da Op\u00e7\u00e3o", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "position": {
+                                            "description": "Ordem do Valor", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "reference_code": {
+                                            "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                            "nullable": true, 
+                                            "type": "string"
+                                        }, 
+                                        "value": {
+                                            "description": "Valor", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }
+                                    }, 
+                                    "required": [
+                                        "id", 
+                                        "title"
+                                    ], 
+                                    "type": "object"
+                                }
+                            }
+                        }, 
+                        "description": "Success"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Grades"
+                ]
+            }
+        }, 
+        "/{environment}/api/v2/values/{value_id}/": {
+            "delete": {
+                "description": "Deletar um Valor", 
+                "operationId": "Deletar um Valor", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "ID do Valor", 
+                        "in": "path", 
+                        "name": "value_id", 
+                        "required": true, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ], 
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Grades"
+                ]
+            }, 
+            "put": {
+                "description": "Alterar um Valor", 
+                "operationId": "Alterar um Valor", 
+                "parameters": [
+                    {
+                        "description": "Ambinete do cliente", 
+                        "in": "path", 
+                        "name": "environment", 
+                        "required": true, 
+                        "schema": {
+                            "type": "string"
+                        }
+                    }, 
+                    {
+                        "description": "ID do Valor", 
+                        "in": "path", 
+                        "name": "value_id", 
+                        "required": true, 
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ], 
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "option": 5, 
+                                "value": "Azul"
+                            }, 
+                            "required": [
+                                "id", 
+                                "title"
+                            ], 
+                            "schema": {
+                                "properties": {
+                                    "color": {
+                                        "description": "#Hexadecimal - (`separar por virgula caso haja mais de uma`)", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }, 
+                                    "id": {
+                                        "description": "ID do valor", 
+                                        "format": "int64", 
+                                        "nullable": false, 
+                                        "type": "integer"
+                                    }, 
+                                    "option": {
+                                        "description": "ID da Op\u00e7\u00e3o", 
+                                        "nullable": false, 
+                                        "type": "integer"
+                                    }, 
+                                    "position": {
+                                        "description": "Ordem do Valor", 
+                                        "nullable": false, 
+                                        "type": "integer"
+                                    }, 
+                                    "reference_code": {
+                                        "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                        "nullable": true, 
+                                        "type": "string"
+                                    }, 
+                                    "value": {
+                                        "description": "Valor", 
+                                        "nullable": false, 
+                                        "type": "string"
+                                    }
+                                }, 
+                                "required": [
+                                    "id", 
+                                    "title"
+                                ], 
+                                "type": "object"
+                            }
+                        }
+                    }, 
+                    "required": true
+                }, 
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "add_date": "2015-11-11T18:06:14.383121", 
+                                    "change_date": "2015-11-11T18:38:46.746944", 
+                                    "color": "", 
+                                    "id": 14, 
+                                    "option": 5, 
+                                    "position": 0, 
+                                    "reference_code": null, 
+                                    "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/values/14/", 
+                                    "value": "Azul"
+                                }, 
+                                "required": [
+                                    "id", 
+                                    "title"
+                                ], 
+                                "schema": {
+                                    "properties": {
+                                        "color": {
+                                            "description": "#Hexadecimal - (`separar por virgula caso haja mais de uma`)", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }, 
+                                        "id": {
+                                            "description": "ID do valor", 
+                                            "format": "int64", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "option": {
+                                            "description": "ID da Op\u00e7\u00e3o", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "position": {
+                                            "description": "Ordem do Valor", 
+                                            "nullable": false, 
+                                            "type": "integer"
+                                        }, 
+                                        "reference_code": {
+                                            "description": "C\u00f3digo de refer\u00eancia ou c\u00f3digo da grade no ERP", 
+                                            "nullable": true, 
+                                            "type": "string"
+                                        }, 
+                                        "value": {
+                                            "description": "Valor", 
+                                            "nullable": false, 
+                                            "type": "string"
+                                        }
+                                    }, 
+                                    "required": [
+                                        "id", 
+                                        "title"
+                                    ], 
+                                    "type": "object"
+                                }
+                            }
+                        }, 
+                        "description": "Created"
+                    }, 
+                    "400": {
+                        "description": "Bad input"
+                    }, 
+                    "401": {
+                        "description": "Permission Denied"
+                    }, 
+                    "403": {
+                        "description": "Forbidden"
+                    }, 
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }, 
+                "summary": "", 
+                "tags": [
+                    "Grades"
                 ]
             }
         }
@@ -1315,20 +4032,36 @@
             "x-sidebar-name": "Integration API"
         }, 
         {
-            "description": "Endpoints for categories", 
+            "description": "Endpoints for categorias", 
             "externalDocs": {
                 "description": "Found an error? Let us know.", 
-                "url": "https://github.com/convertize/convertize-api-docs/issues/new/?title=API%20Documentation%20Error:%20/api/categories/&template=api_error_template.md"
+                "url": "https://github.com/convertize/convertize-api-docs/issues/new/?title=API%20Documentation%20Error:%20/api/categorias/&template=api_error_template.md"
             }, 
-            "name": "Categories"
+            "name": "Categorias"
         }, 
         {
-            "description": "Endpoints for customers", 
+            "description": "Endpoints for clientes", 
             "externalDocs": {
                 "description": "Found an error? Let us know.", 
-                "url": "https://github.com/convertize/convertize-api-docs/issues/new/?title=API%20Documentation%20Error:%20/api/customers/&template=api_error_template.md"
+                "url": "https://github.com/convertize/convertize-api-docs/issues/new/?title=API%20Documentation%20Error:%20/api/clientes/&template=api_error_template.md"
             }, 
-            "name": "Customers"
+            "name": "Clientes"
+        }, 
+        {
+            "description": "Endpoints for grades", 
+            "externalDocs": {
+                "description": "Found an error? Let us know.", 
+                "url": "https://github.com/convertize/convertize-api-docs/issues/new/?title=API%20Documentation%20Error:%20/api/grades/&template=api_error_template.md"
+            }, 
+            "name": "Grades"
+        }, 
+        {
+            "description": "Endpoints for marcas", 
+            "externalDocs": {
+                "description": "Found an error? Let us know.", 
+                "url": "https://github.com/convertize/convertize-api-docs/issues/new/?title=API%20Documentation%20Error:%20/api/marcas/&template=api_error_template.md"
+            }, 
+            "name": "Marcas"
         }
     ]
 }

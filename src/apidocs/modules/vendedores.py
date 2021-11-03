@@ -20,7 +20,7 @@ seller_componente = dict([
     modules.new_propertie(name="phone", type="string", description=u"Telefone"),
     modules.new_propertie(name="sales", type="integer",format="int4", description=u"Indica o número de vendas"),
     modules.new_propertie(name="physical_store", type="object", description=u"Local de retirada."),
-    modules.new_propertie(name="extra_data", type="string", description=u"Informações adicionais.")      
+    modules.new_propertie(name="extra_data", type="string", description=u"Informações adicionais.")     
         
 ])
 
@@ -111,7 +111,7 @@ export = {
         action='get',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
-            coreapi.Field(name='seller_id', required=True, location='path', description=u"ID do cliente", schema={"type": "integer"}),
+            coreapi.Field(name='seller_id', required=True, location='path', description=u"ID do vendedor", schema={"type": "integer"}),
             coreapi.Field(name='add_date__lte', required=False, location='query', description=u"Filtro por data de criação menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
             coreapi.Field(name='add_date__gte', required=False, location='query', description=u"Filtro por data de criação maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
             coreapi.Field(name='change_date__lte', required=False, location='query', description=u"Filtro por data de alteração menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
@@ -230,13 +230,13 @@ export = {
           }
         }
     ),
-    "CategorieUpdate": modules.ConvertizeLink(
-        tags=["Categorias"],
+    "VendedorUpdate": modules.ConvertizeLink(
+        tags=["Vendedores"],
         url='/{environment}/api/v2/telesales/sellers/{seller_id}/',
         action='put',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
-            coreapi.Field(name='seller_id', required=True, location='path', description=u"ID da categoria", schema={"type": "integer"}),
+            coreapi.Field(name='seller_id', required=True, location='path', description=u"ID da do vendedor", schema={"type": "integer"}),
         ],
         description='Alterar um Vendedor',
         summary='',
@@ -300,8 +300,8 @@ export = {
           }
         }
     ),
-    "CategorieDelete": modules.ConvertizeLink(
-        tags=["Categorias"],
+    "VendedorDelete": modules.ConvertizeLink(
+        tags=["Vendedores"],
         url='/{environment}/api/v2/telesales/sellers/{seller_id}/',
         action='delete',
         fields=[

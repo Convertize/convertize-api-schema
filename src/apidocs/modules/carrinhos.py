@@ -13,7 +13,7 @@ cart_componente = dict([
     modules.new_propertie(name="token_remake", type="string", description=u"Token gerado para refazer carrinho."),
     modules.new_propertie(name="payment_method", type="string", description=u"Forma de Pagamento"),
     modules.new_propertie(name="payment_discount", type="float", description=u"Desconto"),
-    modules.new_propertie(name="payment_interest", type="float", description=u""),
+    modules.new_propertie(name="payment_interest", type="float", description=u"Juros de pagamento"),
     modules.new_propertie(name="installment", type="integer", description=u"Parcelas"),
     modules.new_propertie(name="items", type="list", description=u"Lista de items do carrinho"),
     modules.new_propertie(name="order", type="integer", description=u"Número do pedido")

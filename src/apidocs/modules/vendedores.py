@@ -53,9 +53,9 @@ export = {
             coreapi.Field(name='change_date__lte', required=False, location='query', description=u"Filtro por data de alteração menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
             coreapi.Field(name='change_date__gte', required=False, location='query', description=u"Filtro por data de alteração maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
         ],
-        description='Retorna uma lista de clientes',
+        description='Retorna uma lista de vendedores',
         summary='',
-        operationId='Lista de Categorias',
+        operationId='Lista de Vendedores',
         template={
             "200": {
             "description": "Success",

@@ -58,15 +58,21 @@ export = {
                             "results": [
                                 {
                                      "services": [{
-                                         "price": 5.90,
-                                         "delivery_time": 4,
-                                         "original_delivery_time": 4,
-                                         "label": "Motoboy - Grátis - Até 1 dia útil",
-                                         "service": "MOTOBOY", 
-                                         "pickups": [
-                                             31
-                                         ],
-                                         "scheduled_deliveries_times": None,                                      
+                                        "price": 0,
+                                        "original_price": 0,
+                                        "delivery_time": 2,
+                                        "original_delivery_time": 2,
+                                        "label": "Clique e Retire - Grátis - Até 2h",
+                                        "service": "CLICK_RETIRE",
+                                        "pickup_store": True,
+                                        "pickups": [
+                                            74,
+                                            75,
+                                            77,
+                                            79,
+                                            82
+                                        ],
+                                        "scheduled_deliveries_times": None                                      
                                          },
                                          {
                                           "price": 0.0,
@@ -204,11 +210,7 @@ export = {
                             "quantity": 1 
 
                                 }
-                        ],
-                        
-                        "meta_description": "DESCRICAO SEO",
-                        "meta_keywords": "KEYWORDS SEO",
-                        "inherit_template": False
+                        ]
                     }
                 }
             },
@@ -224,29 +226,35 @@ export = {
                         "results": [
                             {
                             "services": [{
-                            "price": 5.90,
-                            "delivery_time": 4,
-                            "original_delivery_time": 4,
-                            "label": "Motoboy - Grátis - Até 1 dia útil",
-                            "service": "MOTOBOY", 
-                            "pickups": [
-                                31
-                                     ],
-                            "scheduled_deliveries_times": None,                                      
+                                "price": 0,
+                                "original_price": 0,
+                                "delivery_time": 2,
+                                "original_delivery_time": 2,
+                                "label": "Clique e Retire - Grátis - Até 2h",
+                                "service": "CLICK_RETIRE",
+                                "pickup_store": True,
+                                "pickups": [
+                                    74,
+                                    75,
+                                    77,
+                                    79,
+                                    82
+                                ],
+                                "scheduled_deliveries_times": None,                                      
                                          },
                                          {
-                            "price": 0.0,
-                            "original_price": 0.0,
-                            "delivery_time": 2,
-                            "original_delivery_time": 2,
-                            "label": "Clique e Retire - Grátis - Até 2h",
-                            "service": "CLICK_RETIRE",
-                            "pickups":[
-                                  2,
-                                  3,
-                                  4
-                                         ],
-                            "scheduled_deliveries_times":None   
+                                "price": 0.0,
+                                "original_price": 0.0,
+                                "delivery_time": 2,
+                                "original_delivery_time": 2,
+                                "label": "Clique e Retire - Grátis - Até 2h",
+                                "service": "CLICK_RETIRE",
+                                "pickups":[
+                                    2,
+                                    3,
+                                    4
+                                            ],
+                                "scheduled_deliveries_times":None   
                                          }
                                      ]
                                 }

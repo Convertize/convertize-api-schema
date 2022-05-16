@@ -1,3 +1,4 @@
+# coding: utf-8
 import coreapi
 from apidocs import modules
 

@@ -548,7 +548,7 @@ export = {
             coreapi.Field(name='id', required=False, location='query', description=u"Filtro pelo ID do valor da especificação", schema={"type": "string"}),
             coreapi.Field(name='product', required=False, location='query', description=u"Filtro pelo ID do produto", schema={"type": "string"}),
             coreapi.Field(name='specification', required=False, location='query', description=u"Filtro pelo ID da especificação"),
-            coreapi.Field(name='value',required=False, Location='query', description=u"Filtro pelo valor da especificação"),
+            coreapi.Field(name='value',required=False, location='query', description=u"Filtro pelo valor da especificação"),
             coreapi.Field(name='add_date__lte', required=False, location='query', description=u"Filtro por data de criação menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
             coreapi.Field(name='add_date__gte', required=False, location='query', description=u"Filtro por data de criação maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
             coreapi.Field(name='change_date__lte', required=False, location='query', description=u"Filtro por data de alteração menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),

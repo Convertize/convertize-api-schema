@@ -10,7 +10,9 @@ brand_componente = dict([
     modules.new_propertie(name="active", type="boolean", nullable=False, description=u"Indica se esta ativo `default = true`"),
     modules.new_propertie(name="description", type="string", nullable=False, description=u"Descrição da mrca para SEO"),
     modules.new_propertie(name="keywords", type="string", nullable=False, description=u"Keywords da marca para SEO separadas por `“,”`"),
+    modules.new_propertie(name="url", type="string", nullable=False, description=u"URL da marca"),
     modules.new_propertie(name="image", type="string", nullable=False, description=u"URL da imagem"),
+    modules.new_propertie(name="details", type="string", nullable=False, description=u"Detalhes da marca"),
 ])
 
 brands_schema = modules.new_propertie(name="schema", type="object", properties=dict((
@@ -35,6 +37,7 @@ export = {
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
             coreapi.Field(name='id', required=False, location='query', description=u"Filtro pelo ID da marca", schema={"type": "string"}),
+            coreapi.Field(name='active', required=False, location='query', description=u"Filtro por marca ativa", schema={"type": "boolean"}),
             coreapi.Field(name='add_date__lte', required=False, location='query', description=u"Filtro por data de criação menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
             coreapi.Field(name='add_date__gte', required=False, location='query', description=u"Filtro por data de criação maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
             coreapi.Field(name='change_date__lte', required=False, location='query', description=u"Filtro por data de alteração menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
@@ -64,7 +67,8 @@ export = {
                                 "keywords": "",
                                 "add_date": "2014-08-01T16:27:17.913597",
                                 "change_date": "2014-08-01T16:27:17.913621",
-                                "image": None
+                                "image": None,
+                                "details":""
                               }
                             ]
                         }
@@ -112,7 +116,8 @@ export = {
                       "keywords": "",
                       "add_date": "2014-08-01T16:27:17.913597",
                       "change_date": "2014-08-01T16:27:17.913621",
-                      "image": None
+                      "image": None,
+                      "details":""
                     }
                 },
             }
@@ -149,7 +154,8 @@ export = {
                       "slug": "teste",
                       "active": True,
                       "description": None,
-                      "keywords": None
+                      "keywords": None,
+                      "details":""
                   }
                 }
             },
@@ -170,7 +176,8 @@ export = {
                       "keywords": None,
                       "add_date": "2016-10-07T19:06:06.076498",
                       "change_date": "2016-10-07T19:06:06.076534",
-                      "image": "https://api.convertize.com.br/{ENVIRONMENT}/products/brands/2016/logo.png"
+                      "image": "https://api.convertize.com.br/{ENVIRONMENT}/products/brands/2016/logo.png",
+                      "details":""
                   }
                 },
             }
@@ -211,7 +218,8 @@ export = {
                       "slug": "teste",
                       "active": True,
                       "description": None,
-                      "keywords": None
+                      "keywords": None,
+                      "details":""
                   }
                 }
             },
@@ -233,7 +241,8 @@ export = {
                       "keywords": None,
                       "add_date": "2016-10-07T19:06:06.076498",
                       "change_date": "2016-10-07T19:06:06.076534",
-                      "image": "https://api.convertize.com.br/{ENVIRONMENT}/products/brands/2016/logo.png"
+                      "image": "https://api.convertize.com.br/{ENVIRONMENT}/products/brands/2016/logo.png",
+                      "details":""
                   }
                 },
             }

@@ -5,25 +5,29 @@ from apidocs import modules
 cart_componente = dict([
     modules.new_propertie(name="id", type="integer", format="int64", nullable=False, description=u"ID do carrinho"),
     modules.new_propertie(name="status", type="string", nullable=False, description=u"Status do carrinho"),
-    modules.new_propertie(name="customer", type="object", nullable=False, description=u"Informações do cliente."),
-    modules.new_propertie(name="utm_partner", type="string", description=u"Inserir UTM partner"),
-    modules.new_propertie(name="utm_medium", type="string", description=u"Inserir UTM medium"),
+    modules.new_propertie(name="customer", type="object",  nullable=False, description=u"Informações do cliente."),
+    modules.new_propertie(name="utm_partner", type="string",description=u"Inserir UTM partner"),
+    modules.new_propertie(name="utm_medium", type="string",  description=u"Inserir UTM medium"),
     modules.new_propertie(name="utm_source", type="string", description=u"Inserir UTM source"),
-    modules.new_propertie(name="utm_campaign", type="string", description=u"Inserir UTM campaign"),
+    modules.new_propertie(name="utm_campaign", type="string",description=u"Inserir UTM campaign"),
     modules.new_propertie(name="token_remake", type="string", description=u"Token gerado para refazer carrinho."),
     modules.new_propertie(name="payment_method", type="string", description=u"Forma de Pagamento"),
-    modules.new_propertie(name="payment_discount", type="float", description=u"Desconto"),
+    modules.new_propertie(name="payment_discount",type="float", description=u"Desconto"),
     modules.new_propertie(name="payment_interest", type="float", description=u"Juros de pagamento"),
-    modules.new_propertie(name="installment", type="integer", description=u"Parcelas"),
+    modules.new_propertie(name="installment",type="integer", description=u"Parcelas"),
     modules.new_propertie(name="items", type="list", description=u"Lista de items do carrinho"),
-    modules.new_propertie(name="order", type="integer", description=u"Número do pedido")
+    modules.new_propertie(name="order", type="integer",description=u"Número do pedido"),
+    modules.new_propertie(name="seller", type="object",description=u"Vendedor.")
 ])
 
 
 carts_schema = modules.new_propertie(name="schema", type="object", properties=dict((
-    modules.new_propertie(name="next", type="string", nullable=True, description=u"URL com os proximos registro, quando `null`, chegou na ultima pagina."),
-    modules.new_propertie(name="previous", type="string", nullable=True, description=u"URL com os registro anteriores, quando `null`, chegou na primeira pagina."),
-    modules.new_propertie(name="count", type="integer", nullable=False, description=u"Quantidade total de paginas"),
+    modules.new_propertie(name="next", type="string", nullable=True,
+                          description=u"URL com os proximos registro, quando `null`, chegou na ultima pagina."),
+    modules.new_propertie(name="previous", type="string", nullable=True,
+                          description=u"URL com os registro anteriores, quando `null`, chegou na primeira pagina."),
+    modules.new_propertie(name="count", type="integer", nullable=False,
+                          description=u"Quantidade total de paginas"),
     modules.new_propertie(name="results", type="array", items=dict((
         modules.new_propertie(name="required", enum=["id", "status"]),
         modules.new_propertie(name="properties", enum=cart_componente)
@@ -38,15 +42,27 @@ cart_schema = modules.new_propertie(
 export = {
     "Carrinhos": modules.ConvertizeLink(
         tags=["Carrinhos"],
-        url='/{environment}/api/v2/carts/',
+        url='/{environment}/api/v1/carts/',
         action='get',
         fields=[
-            coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
-            coreapi.Field(name='id', required=False, location='query', description=u"Filtro pelo ID do carrinho", schema={"type": "string"}),
-            coreapi.Field(name='add_date__lte', required=False, location='query', description=u"Filtro por data de criação menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
-            coreapi.Field(name='add_date__gte', required=False, location='query', description=u"Filtro por data de criação maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
-            coreapi.Field(name='change_date__lte', required=False, location='query', description=u"Filtro por data de alteração menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
-            coreapi.Field(name='change_date__gte', required=False, location='query', description=u"Filtro por data de alteração maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
+            coreapi.Field(name='environment', required=True, location='path',
+                          description=u"Ambinete do cliente", schema={"type": "string"}),
+            coreapi.Field(name='id', required=False, location='query',
+                          description=u"Filtro pelo ID do carrinho", schema={"type": "string"}),
+            coreapi.Field(name='status', required=False, location='query',
+                          description=u"Filtro pelo status do carrinho", schema={"type": "string"}),
+            coreapi.Field(name='order', required=False, location='query',
+                          description=u"Filtro pelo número do pedido", schema={"type": "integer"}),
+            coreapi.Field(name='seller', required=False, location='query',
+                          description=u"Filtro pelo vendedor", schema={"type": "string"}),
+            coreapi.Field(name='add_date__lte', required=False, location='query',
+                          description=u"Filtro por data de criação menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
+            coreapi.Field(name='add_date__gte', required=False, location='query',
+                          description=u"Filtro por data de criação maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
+            coreapi.Field(name='change_date__lte', required=False, location='query',
+                          description=u"Filtro por data de alteração menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
+            coreapi.Field(name='change_date__gte', required=False, location='query',
+                          description=u"Filtro por data de alteração maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
         ],
         description='Retorna uma lista de Carrinhos',
         summary='',
@@ -59,7 +75,7 @@ export = {
                         carts_schema[0]: carts_schema[1],
                         "example": {
                             "count": 312,
-                            "next": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/carts/?page=2",
+                            "next": "https://api.convertize.com.br/{ENVIRONMENT}/api/1.0/carts/?page=2",
                             "previous": None,
                             "results": [
                                 {
@@ -164,6 +180,8 @@ export = {
                                             "extra_data": None
                                         }
                                     ],
+                                    "order": None,
+                                    "seller": None
                                 }
                             ]
                         }
@@ -183,15 +201,27 @@ export = {
     ),
     "Carrinho": modules.ConvertizeLink(
         tags=["Carrinhos"],
-        url='/{environment}/api/v2/carts/{cart_id}/',
+        url='/{environment}/api/v1/carts/{cart_id}/',
         action='get',
         fields=[
-            coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
-            coreapi.Field(name='cart_id', required=True, location='path', description=u"ID do carrinho", schema={"type": "integer"}),
-            coreapi.Field(name='add_date__lte', required=False, location='query', description=u"Filtro por data de criação menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
-            coreapi.Field(name='add_date__gte', required=False, location='query', description=u"Filtro por data de criação maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
-            coreapi.Field(name='change_date__lte', required=False, location='query', description=u"Filtro por data de alteração menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
-            coreapi.Field(name='change_date__gte', required=False, location='query', description=u"Filtro por data de alteração maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
+            coreapi.Field(name='environment', required=True, location='path',
+                          description=u"Ambinete do cliente", schema={"type": "string"}),
+            coreapi.Field(name='cart_id', required=True, location='path',
+                          description=u"ID do carrinho", schema={"type": "integer"}),
+            coreapi.Field(name='status', required=False, location='query',
+                          description=u"Filtro pelo status do carrinho", schema={"type": "string"}),
+            coreapi.Field(name='order', required=False, location='query',
+                          description=u"Filtro pelo número do pedido", schema={"type": "integer"}),
+            coreapi.Field(name='seller', required=False, location='query',
+                          description=u"Filtro pelo vendedor", schema={"type": "string"}),
+            coreapi.Field(name='add_date__lte', required=False, location='query',
+                          description=u"Filtro por data de criação menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
+            coreapi.Field(name='add_date__gte', required=False, location='query',
+                          description=u"Filtro por data de criação maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
+            coreapi.Field(name='change_date__lte', required=False, location='query',
+                          description=u"Filtro por data de alteração menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
+            coreapi.Field(name='change_date__gte', required=False, location='query',
+                          description=u"Filtro por data de alteração maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
         ],
         description='Retorna um Carrinho por `ID`',
         summary='',
@@ -304,7 +334,8 @@ export = {
                                         "extra_data": None
                                     }
                             ],
-                            "order": None
+                            "order": None,
+                            "seller": None
                         }
                     },
                 }
@@ -322,15 +353,21 @@ export = {
     ),
     "Carrinho": modules.ConvertizeLink(
         tags=["Carrinhos"],
-        url='/{environment}/api/v2/carts/{cart_id}/',
+        url='/{environment}/api/v1/carts/{cart_id}/',
         action='get',
         fields=[
-            coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
-            coreapi.Field(name='cart_id', required=True, location='path', description=u"ID do carrinho", schema={"type": "integer"}),
-            coreapi.Field(name='add_date__lte', required=False, location='query', description=u"Filtro por data de criação menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
-            coreapi.Field(name='add_date__gte', required=False, location='query', description=u"Filtro por data de criação maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
-            coreapi.Field(name='change_date__lte', required=False, location='query', description=u"Filtro por data de alteração menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
-            coreapi.Field(name='change_date__gte', required=False, location='query', description=u"Filtro por data de alteração maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
+            coreapi.Field(name='environment', required=True, location='path',
+                          description=u"Ambinete do cliente", schema={"type": "string"}),
+            coreapi.Field(name='cart_id', required=True, location='path',
+                          description=u"ID do carrinho", schema={"type": "integer"}),
+            coreapi.Field(name='add_date__lte', required=False, location='query',
+                          description=u"Filtro por data de criação menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
+            coreapi.Field(name='add_date__gte', required=False, location='query',
+                          description=u"Filtro por data de criação maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
+            coreapi.Field(name='change_date__lte', required=False, location='query',
+                          description=u"Filtro por data de alteração menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
+            coreapi.Field(name='change_date__gte', required=False, location='query',
+                          description=u"Filtro por data de alteração maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
         ],
         description='Retorna um Carrinho por `ID`',
         summary='',
@@ -443,7 +480,8 @@ export = {
                                         "extra_data": None
                                     }
                             ],
-                            "order": None
+                            "order": None,
+                            "seller": None
                         }
                     },
                 }
@@ -461,11 +499,13 @@ export = {
     ),
     "CarrinhosDeclined": modules.ConvertizeLink(
         tags=["Carrinhos"],
-        url='/{environment}/api/v2/carts/?status=declined',
+        url='/{environment}/api/v1/carts/?status=declined',
         action='get',
         fields=[
-            coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
-            coreapi.Field(name='status', required=False, location='query', description=u"Status do carrinho", schema={"type": "string"}),
+            coreapi.Field(name='environment', required=True, location='path',
+                          description=u"Ambinete do cliente", schema={"type": "string"}),
+            coreapi.Field(name='status', required=False, location='query',
+                          description=u"Status do carrinho", schema={"type": "string"}),
 
         ],
         description='Retorna uma lista de Carrinhos com status `declined`',
@@ -479,7 +519,7 @@ export = {
                         carts_schema[0]: carts_schema[1],
                         "example": {
                             "count": 160,
-                            "next": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/carts/?page=2&status=declined",
+                            "next": "https://api.convertize.com.br/{ENVIRONMENT}/api/v1/carts/?page=2&status=declined",
                             "previous": None,
                             "results": [
                                 {
@@ -584,7 +624,8 @@ export = {
                                             "extra_data": None
                                         }
                                     ],
-                                    "order": None
+                                    "order": None,
+                                    "seller": None
                                 }
                             ]
                         }
@@ -607,8 +648,10 @@ export = {
         url='/{environment}/api/v2/carts/{cart_id}/',
         action='put',
         fields=[
-            coreapi.Field(name='environment', required=True, location='path', description=u"Ambiente do cliente", schema={"type": "string"}),
-            coreapi.Field(name='cart_id', required=True, location='path', description=u"ID do Carrinho", schema={"type": "integer"}),
+            coreapi.Field(name='environment', required=True, location='path',
+                          description=u"Ambiente do cliente", schema={"type": "string"}),
+            coreapi.Field(name='cart_id', required=True, location='path',
+                          description=u"ID do Carrinho", schema={"type": "integer"}),
         ],
         description='Alterar Carrinho',
         summary='',
@@ -620,7 +663,6 @@ export = {
                     cart_schema[0]: cart_schema[1],
                     "example": {
                         "image": "logo.png",
-                        "id": 1496,
                         "last_updated": "2021-10-20T18:00:16.555955",
                         "status": "declined",
                         "customer": {
@@ -716,7 +758,9 @@ export = {
                                 "extra_data": None
                             }
 
-                        ]
+                        ],
+                        "order": None,
+                        "seller": None
                     }
                 }
             },
@@ -831,7 +875,8 @@ export = {
                                         "extra_data": None
                                     }
                             ],
-                            "order": None
+                            "order": None,
+                            "seller": None
                         }
                     },
                 }
@@ -855,8 +900,10 @@ export = {
         url='/{environment}/api/v2/carts/{cart_id}/',
         action='delete',
         fields=[
-            coreapi.Field(name='environment', required=True, location='path', description=u"Ambiente do cliente", schema={"type": "string"}),
-            coreapi.Field(name='cart_id', required=True, location='path', description=u"ID do carrinho", schema={"type": "integer"}),
+            coreapi.Field(name='environment', required=True, location='path',
+                          description=u"Ambiente do cliente", schema={"type": "string"}),
+            coreapi.Field(name='cart_id', required=True, location='path',
+                          description=u"ID do carrinho", schema={"type": "integer"}),
         ],
         description='Deletar um Carrinho',
         summary='',

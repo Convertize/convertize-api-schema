@@ -73,7 +73,7 @@ value_schema = modules.new_propertie(name="schema", type="object", properties=va
 export = {
     "Grades": modules.ConvertizeLink(
         tags=["Grades"],
-        url='/{environment}/api/v2/grids/',
+        url='/{environment}/api/v1/grids/',
         action='get',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
@@ -94,11 +94,11 @@ export = {
                         grids_schema[0]: grids_schema[1],
                         "example": {
                             "count": 188,
-                            "next": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/grids/?page=2",
+                            "next": "https://api.convertize.com.br/{ENVIRONMENT}/api/v1/grids/?page=2",
                             "previous": None,
                             "results": [
                                 {
-                                  "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/grids/1/",
+                                  "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v1/grids/1/",
                                   "id": 1,
                                   "title": "Esmerilhadeiras",
                                   "display": "radio",
@@ -124,7 +124,7 @@ export = {
     ),
     "Grade": modules.ConvertizeLink(
         tags=["Grades"],
-        url='/{environment}/api/v2/grids/{grid_id}/',
+        url='/{environment}/api/v1/grids/{grid_id}/',
         action='get',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
@@ -144,7 +144,7 @@ export = {
                 "application/json": {
                     grid_schema[0]: grid_schema[1],
                     "example": {
-                        "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/grids/1/",
+                        "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v1/grids/1/",
                         "id": 1,
                         "title": "Esmerilhadeiras",
                         "display": "radio",
@@ -168,7 +168,7 @@ export = {
     ),
     "GradeCreate": modules.ConvertizeLink(
         tags=["Grades"],
-        url='/{environment}/api/v2/grids/',
+        url='/{environment}/api/v1/grids/',
         action='post',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
@@ -197,7 +197,7 @@ export = {
                 "application/json": {
                     grid_schema[0]: grid_schema[1],
                     "example": {
-                      "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/grids/2/",
+                      "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v1/grids/2/",
                       "id": 2,
                       "title": "Trenas",
                       "display": "radio",
@@ -225,7 +225,7 @@ export = {
     ),
     "GradeUpdate": modules.ConvertizeLink(
         tags=["Grades"],
-        url='/{environment}/api/v2/grids/{grid_id}/',
+        url='/{environment}/api/v1/grids/{grid_id}/',
         action='put',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
@@ -256,7 +256,7 @@ export = {
                     "required": ["id", "title"],
                     grid_schema[0]: grid_schema[1],
                     "example": {
-                      "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/grids/2/",
+                      "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v1/grids/2/",
                       "id": 2,
                       "title": "Trenas",
                       "display": "radio",
@@ -284,7 +284,7 @@ export = {
     ),
     "GradeDelete": modules.ConvertizeLink(
         tags=["Grades"],
-        url='/{environment}/api/v2/grids/{grid_id}/',
+        url='/{environment}/api/v1/grids/{grid_id}/',
         action='delete',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),

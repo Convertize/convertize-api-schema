@@ -13,7 +13,11 @@ categorie_componente = dict([
     modules.new_propertie(name="meta_description", type="string", nullable=False, description=u"Descrição da categoria para SEO"),
     modules.new_propertie(name="meta_keywords", type="string", nullable=False, description=u"Keywords da categoria para SEO separadas por `“,”`"),
     modules.new_propertie(name="inherit_template", type="boolean", nullable=False, description=u"Herdar template do pai"),
-    modules.new_propertie(name="global_code", type="boolean", nullable=False, description=u"Código da categoria Global `(Google)`")
+    modules.new_propertie(name="for_gift_list", type="boolean", nullable = False, description=u"Indica se irá para lista de presente"),
+    modules.new_propertie(name="global_code", type="boolean", nullable=False, description=u"Código da categoria Global `(Google)`"),
+    modules.new_propertie(name='reference_code', type='string', nullable=False, description=u"Código de referência"),
+    modules.new_propertie(name='details', type="string", nullable = False, description=u"Detalhes da categoria."),
+    modules.new_propertie(name='_order', type="integer", nullable=False, description=u"Ordem da categoria")
 ])
 
 categories_schema = modules.new_propertie(name="schema", type="object", properties=dict((
@@ -33,10 +37,13 @@ categorie_schema = modules.new_propertie(name="schema", type="object", propertie
 export = {
     "Categorias": modules.ConvertizeLink(
         tags=["Categorias"],
-        url='/{environment}/api/v2/categories/',
+        url='/{environment}/api/v1/categories/',
         action='get',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
+            coreapi.Field(name='title', required=False, location='query', description=u"Filtro por título da categoria", schema={"type": "string"}),
+            coreapi.Field(name='active', required=False, location='query', description=u"Filtro por categoria ativa", schema={"type": "boolean"}),
+            coreapi.Field(name='for_gift_list', required=False, location='query', description=u"Filtro por lista de presente", schema={"type": "boolean"}),
             coreapi.Field(name='add_date__lte', required=False, location='query', description=u"Filtro por data de criação menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
             coreapi.Field(name='add_date__gte', required=False, location='query', description=u"Filtro por data de criação maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
             coreapi.Field(name='change_date__lte', required=False, location='query', description=u"Filtro por data de alteração menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
@@ -53,16 +60,17 @@ export = {
                         categories_schema[0]: categories_schema[1],
                         "example": {
                             "count": 188,
-                            "next": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/categories/?page=2",
+                            "next": "https://api.convertize.com.br/{ENVIRONMENT}/api/v1/categories/?page=2",
                             "previous": None,
                             "results": [
                                 {
-                                    "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/categories/4/",
+                                    "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v1/categories/4/",
                                     "id": 4,
                                     "parent": None,
                                     "_order": 2,
                                     "title": "Borracharia",
                                     "slug": "borracharia",
+                                    "reference_code": None,
                                     "active": True,
                                     "add_date": "2014-07-24T09:39:34.660080",
                                     "change_date": "2016-10-06T13:13:00.845996",
@@ -70,7 +78,9 @@ export = {
                                     "meta_description": "Grande variedade em ferramentas para Borracharia. Compre agora suas ferramentas para Borracharia, aproveite as melhores marcas e modelos que temos para oferecer. Acesse!",
                                     "meta_keywords": "borracharia",
                                     "inherit_template": False,
+                                    "for_gift_list": False,
                                     "global_code": None,
+                                    "details": "",
                                     "lft": 1,
                                     "rght": 36,
                                     "tree_id": 2,
@@ -94,7 +104,7 @@ export = {
     ),
     "Categorie": modules.ConvertizeLink(
         tags=["Categorias"],
-        url='/{environment}/api/v2/categories/{categorie_id}/',
+        url='/{environment}/api/v1/categories/{categorie_id}/',
         action='get',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
@@ -114,23 +124,27 @@ export = {
                 "application/json": {
                     categorie_schema[0]: categorie_schema[1],
                     "example": {
-                        "id": 4,
-                        "parent": None,
-                        "_order": 2,
-                        "title": "Borracharia",
-                        "slug": "borracharia",
-                        "active": True,
-                        "add_date": "2014-07-24T09:39:34.660080",
-                        "change_date": "2016-10-06T13:13:00.845996",
-                        "meta_title": "Borracharia - Materiais para Borracharia",
-                        "meta_description": "Grande variedade em ferramentas para Borracharia. Compre agora suas ferramentas para Borracharia, aproveite as melhores marcas e modelos que temos para oferecer. Acesse!",
-                        "meta_keywords": "borracharia",
-                        "inherit_template": False,
-                        "global_code": None,
-                        "lft": 1,
-                        "rght": 36,
-                        "tree_id": 2,
-                        "level": 0
+                                    "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v1/categories/4/",
+                                    "id": 4,
+                                    "parent": None,
+                                    "_order": 2,
+                                    "title": "Borracharia",
+                                    "slug": "borracharia",
+                                    "reference_code": None,
+                                    "active": True,
+                                    "add_date": "2014-07-24T09:39:34.660080",
+                                    "change_date": "2016-10-06T13:13:00.845996",
+                                    "meta_title": "Borracharia - Materiais para Borracharia",
+                                    "meta_description": "Grande variedade em ferramentas para Borracharia. Compre agora suas ferramentas para Borracharia, aproveite as melhores marcas e modelos que temos para oferecer. Acesse!",
+                                    "meta_keywords": "borracharia",
+                                    "inherit_template": False,
+                                    "for_gift_list": False,
+                                    "global_code": None,
+                                    "details": "",
+                                    "lft": 1,
+                                    "rght": 36,
+                                    "tree_id": 2,
+                                    "level": 0
                     }
                 },
             }
@@ -148,7 +162,7 @@ export = {
     ),
     "CategorieCreate": modules.ConvertizeLink(
         tags=["Categorias"],
-        url='/{environment}/api/v2/categories/',
+        url='/{environment}/api/v1/categories/',
         action='post',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
@@ -162,12 +176,19 @@ export = {
                     "required": ["id", "title"],
                     categorie_schema[0]: categorie_schema[1],
                     "example": {
-                        "title": "TITULO",
-                        "active": True,
-                        "meta_title": "TITULO SEO",
-                        "meta_description": "DESCRICAO SEO",
-                        "meta_keywords": "KEYWORDS SEO",
-                        "inherit_template": False
+                            "parent": None,
+                            "title": "Borracharia",
+                            "slug": "borracharia",
+                            "reference_code": None,
+                            "active": True,
+                            "add_date": "2014-07-24T09:39:34.660080",
+                            "meta_title": "Borracharia - Materiais para Borracharia",
+                            "meta_description": "Grande variedade em ferramentas para Borracharia. Compre agora suas ferramentas para Borracharia, aproveite as melhores marcas e modelos que temos para oferecer. Acesse!",
+                            "meta_keywords": "borracharia",
+                            "inherit_template": False,
+                            "for_gift_list": False,
+                            "global_code": None,
+                            "details": ""
                     }
                 }
             },
@@ -180,12 +201,27 @@ export = {
                 "application/json": {
                     categorie_schema[0]: categorie_schema[1],
                     "example": {
-                        "title": "TITULO",
+                        "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v1/categories/4/",
+                        "id": 4,
+                        "parent": None,
+                        "_order": 2,
+                        "title": "Borracharia",
+                        "slug": "borracharia",
+                        "reference_code": None,
                         "active": True,
-                        "meta_title": "TITULO SEO",
-                        "meta_description": "DESCRICAO SEO",
-                        "meta_keywords": "KEYWORDS SEO",
-                        "inherit_template": False
+                        "add_date": "2014-07-24T09:39:34.660080",
+                        "change_date": "2016-10-06T13:13:00.845996",
+                        "meta_title": "Borracharia - Materiais para Borracharia",
+                        "meta_description": "Grande variedade em ferramentas para Borracharia. Compre agora suas ferramentas para Borracharia, aproveite as melhores marcas e modelos que temos para oferecer. Acesse!",
+                        "meta_keywords": "borracharia",
+                        "inherit_template": False,
+                        "for_gift_list": False,
+                        "global_code": None,
+                        "details": "",
+                        "lft": 1,
+                        "rght": 36,
+                        "tree_id": 2,
+                        "level": 0
                     }
                 },
             }
@@ -206,7 +242,7 @@ export = {
     ),
     "CategorieUpdate": modules.ConvertizeLink(
         tags=["Categorias"],
-        url='/{environment}/api/v2/categories/{categorie_id}/',
+        url='/{environment}/api/v1/categories/{categorie_id}/',
         action='put',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
@@ -221,13 +257,20 @@ export = {
                     "required": ["id", "title"],
                     categorie_schema[0]: categorie_schema[1],
                     "example": {
-                        "title": "TITULO",
-                        "slug": "teste",
+                        "id": 4,
+                        "parent": None,
+                        "title": "Borracharia",
+                        "slug": "borracharia",
+                        "reference_code": None,
                         "active": True,
-                        "meta_title": "TITULO SEO",
-                        "meta_description": "DESCRICAO SEO",
-                        "meta_keywords": "KEYWORDS SEO",
-                        "inherit_template": False
+                        "add_date": "2014-07-24T09:39:34.660080",
+                        "meta_title": "Borracharia - Materiais para Borracharia",
+                        "meta_description": "Grande variedade em ferramentas para Borracharia. Compre agora suas ferramentas para Borracharia, aproveite as melhores marcas e modelos que temos para oferecer. Acesse!",
+                        "meta_keywords": "borracharia",
+                        "inherit_template": False,
+                        "for_gift_list": False,
+                        "global_code": None,
+                        "details": ""
                     }
                 }
             },
@@ -241,24 +284,26 @@ export = {
                     "required": ["id", "title"],
                     categorie_schema[0]: categorie_schema[1],
                     "example": {
-                        "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v2/categories/74/",
-                        "id": 74,
-                        "parent": 4,
-                        "_order": 65,
-                        "title": "TITULO",
-                        "slug": "teste",
+                        "url": "https://api.convertize.com.br/{ENVIRONMENT}/api/v1/categories/4/",
+                        "parent": None,
+                        "_order": 2,
+                        "title": "Borracharia",
+                        "slug": "borracharia",
+                        "reference_code": None,
                         "active": True,
-                        "add_date": "2014-09-11T14:19:23.997496",
-                        "change_date": "2014-12-26T16:38:32.426313",
-                        "meta_title": "TITULO SEO",
-                        "meta_description": "DESCRICAO SEO",
-                        "meta_keywords": "KEYWORDS SEO",
+                        "add_date": "2014-07-24T09:39:34.660080",
+                        "change_date": "2016-10-06T13:13:00.845996",
+                        "meta_title": "Borracharia - Materiais para Borracharia",
+                        "meta_description": "Grande variedade em ferramentas para Borracharia. Compre agora suas ferramentas para Borracharia, aproveite as melhores marcas e modelos que temos para oferecer. Acesse!",
+                        "meta_keywords": "borracharia",
                         "inherit_template": False,
+                        "for_gift_list": False,
                         "global_code": None,
-                        "lft": 2,
-                        "rght": 3,
+                        "details": "",
+                        "lft": 1,
+                        "rght": 36,
                         "tree_id": 2,
-                        "level": 1
+                        "level": 0
                     }
                 },
             }
@@ -279,7 +324,7 @@ export = {
     ),
     "CategorieDelete": modules.ConvertizeLink(
         tags=["Categorias"],
-        url='/{environment}/api/v2/categories/{categorie_id}/',
+        url='/{environment}/api/v1/categories/{categorie_id}/',
         action='delete',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),

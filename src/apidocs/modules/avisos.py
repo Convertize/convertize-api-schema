@@ -26,10 +26,11 @@ notice_schema = modules.new_propertie(name="schema", type="object", properties=n
 export = {
     "Notices": modules.ConvertizeLink(
         tags=["Avisos"],
-        url='/{environment}/api/v2/letmeknow/',
+        url='/{environment}/api/v1/letmeknow/',
         action='get',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
+            coreapi.Field(name='sent', required=True, location='query', description=u"Ambinete do cliente", schema={"type": "string"}),
             coreapi.Field(name='add_date__lte', required=False, location='query', description=u"Filtro por data de criação menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
             coreapi.Field(name='add_date__gte', required=False, location='query', description=u"Filtro por data de criação maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
             coreapi.Field(name='change_date__lte', required=False, location='query', description=u"Filtro por data de alteração menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
@@ -103,7 +104,7 @@ export = {
     ),
     "Notice": modules.ConvertizeLink(
         tags=["Avisos"],
-        url='/{environment}/api/v2/letmeknow/{notice_id}/',
+        url='/{environment}/api/v1/letmeknow/{notice_id}/',
         action='get',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
@@ -147,7 +148,7 @@ export = {
     ),
     "NoticeCreate": modules.ConvertizeLink(
         tags=["Avisos"],
-        url='/{environment}/api/v2/letmeknow/',
+        url='/{environment}/api/v1/letmeknow/',
         action='post',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
@@ -203,7 +204,7 @@ export = {
     ),
     "NoticeUpdate": modules.ConvertizeLink(
         tags=["Avisos"],
-        url='/{environment}/api/v2/letmeknow/{notice_id}/',
+        url='/{environment}/api/v1/letmeknow/{notice_id}/',
         action='put',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
@@ -261,7 +262,7 @@ export = {
     ),
     "NoticeDelete": modules.ConvertizeLink(
         tags=["Avisos"],
-        url='/{environment}/api/v2/letmeknow/{notice_id}/',
+        url='/{environment}/api/v1/letmeknow/{notice_id}/',
         action='delete',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),

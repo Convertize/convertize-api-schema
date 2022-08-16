@@ -5,6 +5,7 @@ from apidocs import modules
 
 logistic_componente = dict([
     modules.new_propertie(name="id", type="integer", nullable=False, format="int64", description=u"ID do stock"),
+    modules.new_propertie(name="stock", type="integer", nullable=False, format="int64", description=u"stock"),
     modules.new_propertie(name="sku", type="integer", nullable=False, format="int4", description=u"ID do SKU"),
     modules.new_propertie(name="quantity", type="integer", nullable=False, format="int4", description=u"Estoque"),
     modules.new_propertie(name="infinity", type="boolean", nullable=False, description=u"Indica se o estoque é infinito `default = false`"),
@@ -32,7 +33,9 @@ export = {
         action='get',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
+            coreapi.Field(name='stock', required=False, location='query', description=u"Filtro por stock", schema={"type": "integer"}),
             coreapi.Field(name='sku', required=True, location='query', description=u"Filtro pelo ID do SKU", schema={"type": "integer"}),
+            coreapi.Field(name='infinity', required=False, location='query', description=u"Filtro por infinito", schema={"type": "integer"}),
             coreapi.Field(name='sku__in', required=False, location='query', description=u"Filtro pela lista de ID do SKU separados por `,`", schema={"type": "string"}),
             coreapi.Field(name='quantity__gte', required=False, location='query', description=u"Filtro por data de criação maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}),
             coreapi.Field(name='quantity__lte', required=False, location='query', description=u"Filtro por data de alteração menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "string", "format": "date-time"}), 
@@ -57,7 +60,7 @@ export = {
                                     "parent": None,
                                     "sku": 1676,
                                     "quantity": 10,
-                                    "slug": "borracharia",                                  
+                                    "infinity": False,                                  
                                 },
                                  {
                                     "id": 2,

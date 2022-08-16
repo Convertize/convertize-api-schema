@@ -20,7 +20,22 @@ seller_componente = dict([
     modules.new_propertie(name="phone", type="string", description=u"Telefone"),
     modules.new_propertie(name="sales", type="integer",format="int4", description=u"Indica o número de vendas"),
     modules.new_propertie(name="physical_store", type="object", description=u"Local de retirada."),
-    modules.new_propertie(name="extra_data", type="string", description=u"Informações adicionais.")     
+    modules.new_propertie(name="seller_type", type="string", description=u"Tipo de vendedor."),
+    modules.new_propertie(name="store_identification", type="", description=u"Identificação da loja."),
+    modules.new_propertie(name="logo_url", type="string", description=u"URL do logo."),
+    modules.new_propertie(name='return_policy', type='string', description=u"Política de Troca e Devolução"),
+    modules.new_propertie(name='delivery_policy', type='string', description=u"Política de entrega"),
+    modules.new_propertie(name='security_privacy_policy', type='string', description=u"Política de Segurança e Privacidade"),
+    modules.new_propertie(name='use_giftcard', type='boolean', description=u"Indica se pode usar GiftCard como forma de pagamento `default = false` "),
+    modules.new_propertie(name='product_commission', type='float', description=u"Comissão em Produtos"),
+    modules.new_propertie(name='freight_commission', type='float', description=u"Comissão em Frete"),
+    modules.new_propertie(name='fulfillment_endpoint', type='string', description=u"URL do endpoint de Fullfillment"),
+    modules.new_propertie(name='catalog_endpoint', type='string', description=u"URL do endpoint de Catalogo"),
+    modules.new_propertie(name='merchant_name', type='string', description=u"Merchant name"),
+    modules.new_propertie(name='is_full_store', type='boolean', description=u""),
+    modules.new_propertie(name='trust_policy', type='string', description=u"Política de confiança"),
+    modules.new_propertie(name="extra_data", type="object", description=u"Informações adicionais."),
+    modules.new_propertie(name='document', type='string', description=u"CPF/CNPJ"),     
         
 ])
 
@@ -48,6 +63,10 @@ export = {
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
             coreapi.Field(name='id', required=False, location='query', description=u"Filtro por id do vendedor", schema={"type": "string"}),
+            coreapi.Field(name='blocked', required=False, location='query', description=u"Filtro por vendedor bloqueado", schema={"type": "boolean"}),
+            coreapi.Field(name='store', required=False, location='query', description=u"Filtro por vendedor que tenha loja", schema={"type": "boolean"}),
+            coreapi.Field(name='group', required=False, location='query', description=u"Filtro por grupo", schema={"type": "integer"}),
+            coreapi.Field(name='supervisor', required=False, location='query', description=u"Filtro por supervisor", schema={"type":"string"}),
             coreapi.Field(name='add_date__lte', required=False, location='query', description=u"Filtro por data de criação menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
             coreapi.Field(name='add_date__gte', required=False, location='query', description=u"Filtro por data de criação maior ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
             coreapi.Field(name='change_date__lte', required=False, location='query', description=u"Filtro por data de alteração menor ou igual. formato: `YYYY-mm-DDT:H:M:S`", schema={"type": "integer"}),
@@ -85,9 +104,24 @@ export = {
                             "phone": "",
                             "sales": 0,
                             "physical_store": None,
+                            "seller_Type": "store",
+                            "store_identification": None,
+                            "logo_url": None,
+                            "return_policy": None,
+                            "delivery_policy": None,
+                            "secutity_privacy_policy": None,
+                            "use_giftcard": False,
+                            "product_commission": "0.00",
+                            "freight_commission": "0.00",
+                            "fulfillment_endpoint": None,
+                            "catalog_endpoint": None,
+                            "merchant_name": None,
+                            "is_full_store": False,
+                            "trust_policy": "default",
                             "add_date": "2021-07-21T16:12:41.466987",
                             "change_date": "2021-07-21T16:12:41.467003",
-                            "extra_data": None
+                            "extra_data": None,
+                            "document":None
                         }
                       ]
                     }
@@ -144,9 +178,24 @@ export = {
                         "phone": "",
                         "sales": 0,
                         "physical_store": None,
+                        "seller_Type": "store",
+                        "store_identification": None,
+                        "logo_url": None,
+                        "return_policy": None,
+                        "delivery_policy": None,
+                        "secutity_privacy_policy": None,
+                        "use_giftcard": False,
+                        "product_commission": "0.00",
+                        "freight_commission": "0.00",
+                        "fulfillment_endpoint": None,
+                        "catalog_endpoint": None,
+                        "merchant_name": None,
+                        "is_full_store": False,
+                        "trust_policy": "default",
                         "add_date": "2021-07-21T16:12:41.466987",
                         "change_date": "2021-07-21T16:12:41.467003",
-                        "extra_data": None
+                        "extra_data": None,
+                        "document":None
                     }
                 },
             }
@@ -209,9 +258,24 @@ export = {
                         "phone": "",
                         "sales": 0,
                         "physical_store": None,
+                        "seller_Type": "store",
+                        "store_identification": None,
+                        "logo_url": None,
+                        "return_policy": None,
+                        "delivery_policy": None,
+                        "secutity_privacy_policy": None,
+                        "use_giftcard": False,
+                        "product_commission": "0.00",
+                        "freight_commission": "0.00",
+                        "fulfillment_endpoint": None,
+                        "catalog_endpoint": None,
+                        "merchant_name": None,
+                        "is_full_store": False,
+                        "trust_policy": "default",
                         "add_date": "2021-07-21T16:12:41.466987",
                         "change_date": "2021-07-21T16:12:41.467003",
-                        "extra_data": None
+                        "extra_data": None,
+                        "document":None
                     }
                 },
             }
@@ -279,9 +343,24 @@ export = {
                         "phone": "",
                         "sales": 0,
                         "physical_store": None,
+                        "seller_Type": "store",
+                        "store_identification": None,
+                        "logo_url": None,
+                        "return_policy": None,
+                        "delivery_policy": None,
+                        "secutity_privacy_policy": None,
+                        "use_giftcard": False,
+                        "product_commission": "0.00",
+                        "freight_commission": "0.00",
+                        "fulfillment_endpoint": None,
+                        "catalog_endpoint": None,
+                        "merchant_name": None,
+                        "is_full_store": False,
+                        "trust_policy": "default",
                         "add_date": "2021-07-21T16:12:41.466987",
                         "change_date": "2021-07-21T16:12:41.467003",
-                        "extra_data": None
+                        "extra_data": None,
+                        "document":None
                     }
                 },
             }

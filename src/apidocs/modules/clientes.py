@@ -290,7 +290,7 @@ export = {
         action='put',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
-            coreapi.Field(name='categorie_id', required=True, location='path', description=u"ID da categoria", schema={"type": "integer"}),
+            coreapi.Field(name='customer_id', required=True, location='path', description=u"ID da categoria", schema={"type": "integer"}),
         ],
         description='Alterar um Cliente',
         summary='',

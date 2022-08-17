@@ -202,5 +202,169 @@ export = {
             "description": "Not Found"
           }
         }
+    ),
+    "CustomerCreate": modules.ConvertizeLink(
+        tags=["Clientes"],
+        url='/{environment}/api/v1/customers/',
+        action='post',
+        fields=[
+            coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
+        ],
+        description='Criar um Cliente',
+        summary='',
+        operationId='Criar um Cliente',
+        requestBody={
+            "content": {
+                "application/json": {
+                    "required": ["id", "title"],
+                    customer_schema[0]: customer_schema[1],
+                    "example": {
+                        "email": "contato@convertize.com.br",
+                        "group":None
+                    }
+                }
+            },
+            "required": True
+        },
+        template={
+            "201": {
+            "description": "Created",
+            "content": {
+                "application/json": {
+                    customer_schema[0]: customer_schema[1],
+                    "example": {
+                        "id": 138468,
+                        "reference_code": None,
+                        "email": "contato@convertize.com.br",
+                        "document":None,
+                        "corporate_document":None,
+                        "name": "Convertize E-Commerce",
+                        "corporate_name":None,
+                        "inscricao_estadual_isento":False,
+                        "inscricao_estadual":None,
+                        "fancy_name":None,
+                        "birthdate":None,
+                        "gender":None,
+                        "blocked": False,
+                        "newsletter": 1,
+                        "gdpr_agreement":True,
+                        "receiver":"Convertize E-Commerce",
+                        "zipcode": None,
+                        "address": None,
+                        "number": None,
+                        "neighborhood": None,
+                        "complement": None,
+                        "city": None,
+                        "state": None,
+                        "phone1": None,
+                        "phone2": None,
+                        "reference": None,
+                        "city_id": None,
+                        "code_ibge": None,
+                        "add_date": "2017-08-18T14:04:04.826000",
+                        "change_date": "2017-08-18T14:04:04.826020",
+                        "limit_credit": None,
+                        "balance_of_credit": None,
+                        "group":None
+                    }
+                },
+            }
+          },
+          "400": {
+            "description": "Bad input"
+          },
+          "401": {
+            "description": "Permission Denied"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+    ),
+    "CustomerUpdate": modules.ConvertizeLink(
+        tags=["Clientes"],
+        url='/{environment}/api/v1/customers/{customer_id}/',
+        action='put',
+        fields=[
+            coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
+            coreapi.Field(name='categorie_id', required=True, location='path', description=u"ID da categoria", schema={"type": "integer"}),
+        ],
+        description='Alterar um Cliente',
+        summary='',
+        operationId='Alterar um Cliente',
+        requestBody={
+            "content": {
+                "application/json": {
+                    "required": ["id", "title"],
+                    customer_schema[0]: customer_schema[1],
+                    "example": {
+                        "email": "contato@convertize.com.br",
+                        "group":None
+                    }
+                }
+            },
+            "required": True
+        },
+        template={
+            "200": {
+            "description": "Created",
+            "content": {
+                "application/json": {
+                    "required": ["id", "title"],
+                    customer_schema[0]: customer_schema[1],
+                    "example": {
+                        "id": 138468,
+                        "reference_code": None,
+                        "email": "contato@convertize.com.br",
+                        "document":None,
+                        "corporate_document":None,
+                        "name": "Convertize E-Commerce",
+                        "corporate_name":None,
+                        "inscricao_estadual_isento":False,
+                        "inscricao_estadual":None,
+                        "fancy_name":None,
+                        "birthdate":None,
+                        "gender":None,
+                        "blocked": False,
+                        "newsletter": 1,
+                        "gdpr_agreement":True,
+                        "receiver":"Convertize E-Commerce",
+                        "zipcode": None,
+                        "address": None,
+                        "number": None,
+                        "neighborhood": None,
+                        "complement": None,
+                        "city": None,
+                        "state": None,
+                        "phone1": None,
+                        "phone2": None,
+                        "reference": None,
+                        "city_id": None,
+                        "code_ibge": None,
+                        "add_date": "2017-08-18T14:04:04.826000",
+                        "change_date": "2017-08-18T14:04:04.826020",
+                        "limit_credit": None,
+                        "balance_of_credit": None,
+                        "group":None
+                    }
+                },
+            }
+          },
+          "400": {
+            "description": "Bad input"
+          },
+          "401": {
+            "description": "Permission Denied"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
     )
 }

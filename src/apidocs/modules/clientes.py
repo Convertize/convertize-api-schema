@@ -53,7 +53,7 @@ customer_schema = modules.new_propertie(name="schema", type="object", properties
 export = {
     "Clientes": modules.ConvertizeLink(
         tags=["Clientes"],
-        url='/{environment}/api/v2/customers/',
+        url='/{environment}/api/1.0/customers/',
         action='get',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
@@ -133,7 +133,7 @@ export = {
     ),
     "Customer": modules.ConvertizeLink(
         tags=["Clientes"],
-        url='/{environment}/api/v2/customers/{customer_id}/',
+        url='/{environment}/api/1.0/customers/{customer_id}/',
         action='get',
         fields=[
             coreapi.Field(name='environment', required=True, location='path', description=u"Ambinete do cliente", schema={"type": "string"}),
